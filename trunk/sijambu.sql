@@ -58,7 +58,7 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `strStyle`) VALUES
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'herbal'),
 (2, 'pegawai', 'a431ba54c55ae2cb91be1785398ecd595ca96b7a', 'herbal'),
 (3, 'pemilik', '1f86485ac9c8b00fb355bd1eb1c86d937f6d457c', 'herbal'),
-(4, 'pegelola', 'c04b214bd23a91c98288045a99f753e25b70d691', 'herbal');
+(4, 'pengelola', 'c04b214bd23a91c98288045a99f753e25b70d691', 'herbal');
 
 -- --------------------------------------------------------
 
