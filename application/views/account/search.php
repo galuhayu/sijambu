@@ -40,30 +40,30 @@ echo form_open('account/search_controller/searchAccount',$attributes);?>
 	</tr>
 </table>
 <?php echo form_close();?>
-<?php if ($content!=0){
+</fieldset>
 
-$tmpl = array (
-	'table_open'          => '<table border="0" cellpadding="4" cellspacing="0">',
+<?php if ($content!=""){
 
-	'heading_row_start'   => '<tr>',
-	'heading_row_end'     => '</tr>',
-	'heading_cell_start'  => '<th>',
-	'heading_cell_end'    => '</th>',
+	$tmpl = array (
+		'table_open'          => '<table id = "table" border="0" cellpadding="4" cellspacing="0">',
 
-	'row_start'           => '<tr>',
-	'row_end'             => '</tr>',
-	'cell_start'          => '<td>',
-	'cell_end'            => '</td>',
+		'heading_row_start'   => '<tr>',
+		'heading_row_end'     => '</tr>',
+		'heading_cell_start'  => '<th  class="tablehead">',
+		'heading_cell_end'    => '</th>',
 
-	'row_alt_start'       => '<tr>',
-	'row_alt_end'         => '</tr>',
-	'cell_alt_start'      => '<td>',
-	'cell_alt_end'        => '</td>',
+		'row_start'           => '<tr class="tablerow_odd">',
+		'row_end'             => '</tr>',
+		'cell_start'          => '<td>',
+		'cell_end'            => '</td>',
 
-	'table_close'         => '</table>'
+		'row_alt_start'       => '<tr class="tablerow_even">',
+		'row_alt_end'         => '</tr>',
+		'cell_alt_start'      => '<td>',
+		'cell_alt_end'        => '</td>',
+
+		'table_close'         => '</table>'
 	);
-
-$this->table->set_template($tmpl); 
 $this->table->set_heading('Username','Jabatan');
 $this->table->add_row($content['username'],$content['role_name']);
 
@@ -71,7 +71,7 @@ echo $this->table->generate();
 }
 ?>
 
-</fieldset>
+
 
 
 </div>
