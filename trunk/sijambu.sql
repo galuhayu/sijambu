@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2010 at 12:35 PM
+-- Generation Time: Nov 13, 2010 at 02:38 PM
 -- Server version: 5.0.45
 -- PHP Version: 5.2.4
 
@@ -46,19 +46,21 @@ CREATE TABLE `user` (
   `username` varchar(20) collate latin1_general_ci NOT NULL,
   `password` varchar(40) collate latin1_general_ci NOT NULL,
   `strStyle` varchar(10) collate latin1_general_ci NOT NULL,
+  `isDelete` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `strStyle`) VALUES
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'herbal'),
-(2, 'pegawai', 'a431ba54c55ae2cb91be1785398ecd595ca96b7a', 'herbal'),
-(3, 'pemilik', '1f86485ac9c8b00fb355bd1eb1c86d937f6d457c', 'herbal'),
-(4, 'pengelola', 'c04b214bd23a91c98288045a99f753e25b70d691', 'herbal');
+INSERT INTO `user` (`user_id`, `username`, `password`, `strStyle`, `isDelete`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'herbal', 0),
+(2, 'pegawai', 'a431ba54c55ae2cb91be1785398ecd595ca96b7a', 'herbal', 0),
+(3, 'pemilik', '1f86485ac9c8b00fb355bd1eb1c86d937f6d457c', 'herbal', 0),
+(4, 'pengelola', 'c04b214bd23a91c98288045a99f753e25b70d691', 'herbal', 0),
+(28, 'ade', '6fb0394b969258c4f33b92bbe8c601462bb5455b', 'herbal', 0);
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,7 @@ CREATE TABLE `user_role` (
   `user_id` int(5) NOT NULL,
   `role_id` int(5) NOT NULL,
   PRIMARY KEY  (`user_role_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `user_role`
@@ -81,4 +83,5 @@ INSERT INTO `user_role` (`user_role_id`, `user_id`, `role_id`) VALUES
 (1, 1, 1),
 (2, 2, 2),
 (3, 3, 3),
-(4, 4, 4);
+(4, 4, 4),
+(14, 28, 4);
