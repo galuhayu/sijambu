@@ -34,68 +34,23 @@ class Account_model extends Model
 			return 0;
 		return 1;
 	}
-	/**
-	 * get the roles from the username
-	 *
-	 */
-	function get_roles( $userid ) {
-		$query = $this->db->query("SELECT role.role_name FROM role, user_role WHERE 
-				user_role.user_id = '$userid' AND user_role.role_id = role.role_id AND isDelete = 0" );
-		
-		if( $query->num_rows() != 0 ) {
-			return $query->result_array(); 
-		}
-		else return 0;	
-	}
-    
-    /**
-	 * get the user data list
-	 *
-	 */
-	function get_users() {
-    
-		$query = $this->db->query("SELECT user.username, user.user_id FROM user WHERE isDelete = 0");
-		
-		if( $query->num_rows() != 0 ) {
-			return $query->result_array(); 
-		}
-		else return 0;	
-	}
-    
-    /**
-	 * get the user theme style
-	 *
-	 */
-	function get_style($user_id) {
-    
-		$this->db->select('strStyle');
-		$this->db->where('user_id', $user_id);
-		$query = $this->db->get('user');
-        
-        if( $query->num_rows() != 0 ) {
+	
+	function update_account ($username, $newrolename){
+		$query = $this->db->query("SELECT user_id FROM user WHERE username = '$username'");
+		if ($query->num_rows()!=0){
 			$row = $query->row();
-			return $row->strStyle;
+			$userid = $row->user_id;
 		}
-		else return 0;	
-	}
-    
-    /**
-	 * get the user theme style
-	 *
-	 */
-	function set_style( $strStyle, $user_id) {
-    
-        $sql = "UPDATE user SET strStyle='".$strStyle."' WHERE user_id='".$user_id."'";
-		$query = $this->db->query($sql);
-	}
-    
-    /**
-	 * update password
-	 *
-	 */
-	function change_pswd( $newpswd, $user_id ) {
-    
-        $sql = "UPDATE user SET password='".SHA1($newpswd)."' WHERE user_id='".$user_id."'";
-		$query = $this->db->query($sql);
+		else return 0;
+		
+		$query = $this->db->query("SELECT user_role_id FROM user_role WHERE user_id= '$userid'");
+		$row=$query->row();
+		$userroleid = $row->user_role_id;
+		
+		$query = $this->db->query("SELECT role_id FROM role WHERE role_name= '$newrolename'");
+		$row = $query->row();
+		$newroleid = $row->role_id;
+		
+		$this->db->query("UPDATE user_role SET role_id = '$newroleid' WHERE user_role_id= '$userroleid'");
 	}
 }

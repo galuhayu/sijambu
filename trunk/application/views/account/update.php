@@ -21,6 +21,35 @@ UPDATE
 <div class="notification">
 <?php echo $notification_message;?>
 </div>
+
+<?php if ($content==""){?>
+<fieldset>
+<legend>Account Detail</legend> 
+
+
+<?php 
+	$attributes = array('id' => 'search_form');
+	$field1 = array( 
+	'type' => 'text',  
+	'name' => 'username',
+	'id' => 'username',
+	'rules' => 'required',
+	);
+
+echo form_open('account/update_controller/searchAccount',$attributes);?>
+<table id="form">
+	<tr>
+	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	</tr>
+	<tr>
+	<td><?php echo form_submit('find', 'Find');?></td>
+	</tr>
+</table>
+<?php echo form_close();?>
+</fieldset>
+<?php } else {?>
+
+
 <fieldset>
 <legend>Account Information</legend>
 
@@ -30,12 +59,8 @@ UPDATE
 	'type' => 'text',  
 	'name' => 'username',
 	'id' => 'username',
-	'rules' => 'required',
-	);
-	$field2 = array(
-	'type' => 'password',  
-	'name' => 'password',
-	'id' => 'password',
+	'readonly' => 'readonly',
+	'value' => $content['username'],
 	'rules' => 'required',
 	);
 	$field3 = array(
@@ -59,14 +84,12 @@ UPDATE
 	'id' => 'telp',
 	);
 
-echo form_open('account/add_controller/addAccount',$attributes);?>
+echo form_open('account/update_controller/updateAccount',$attributes);?>
 <table id="form">
 	<tr>
 	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
-	<tr>
-	<td>Password</td><td>: <?php echo form_input($field2); ?></td>
-	</tr>
+	
 	<tr>
 	<td>Nama</td><td>: <?php echo form_input($field3); ?></td>
 	</tr>
@@ -74,19 +97,21 @@ echo form_open('account/add_controller/addAccount',$attributes);?>
 	<td>Alamat</td><td>: <?php echo form_input($field4); ?></td>
 	</tr>
 	<tr>
-	<td>Jabatan</td><td>: <?php echo form_dropdown('jabatan',$field5,'pegawai_toko'); ?></td>
+	<td>Jabatan</td><td>: <?php echo form_dropdown('jabatan',$field5,$content['role_name']); ?></td>
 	</tr>
 	<tr>
 	<td>No telp</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('register', 'Register');?></td>
+	<td><?php echo form_submit('update', 'Update');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>
 </div>
 
 </fieldset>
+
+<?php } ?>
 </div>
 </div>
 </body>
