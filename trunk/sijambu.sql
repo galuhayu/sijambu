@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2010 at 12:32 AM
+-- Generation Time: Nov 13, 2010 at 12:35 PM
 -- Server version: 5.0.45
 -- PHP Version: 5.2.4
 
@@ -46,8 +46,9 @@ CREATE TABLE `user` (
   `username` varchar(20) collate latin1_general_ci NOT NULL,
   `password` varchar(40) collate latin1_general_ci NOT NULL,
   `strStyle` varchar(10) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
+  PRIMARY KEY  (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `user`
@@ -70,7 +71,7 @@ CREATE TABLE `user_role` (
   `user_id` int(5) NOT NULL,
   `role_id` int(5) NOT NULL,
   PRIMARY KEY  (`user_role_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `user_role`
@@ -80,4 +81,10 @@ INSERT INTO `user_role` (`user_role_id`, `user_id`, `role_id`) VALUES
 (1, 1, 1),
 (2, 2, 2),
 (3, 3, 3),
-(4, 4, 4);
+(4, 4, 4),
+(10, 24, 2),
+(9, 23, 4),
+(8, 22, 4),
+(11, 25, 2),
+(12, 26, 4),
+(13, 27, 3);
