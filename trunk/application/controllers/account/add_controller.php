@@ -21,6 +21,9 @@ class Add_controller extends Controller {
 	}
 	
 	function addAccount(){
+		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('password','Password','required');
+		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Input Invalid";
 		}
