@@ -70,11 +70,12 @@ BODY
 .content
 {
 	border: 2px solid #095E98;
-	margin: 0 20px;
+	margin: 0 20px 30px;
+	padding: 10px 0 10px 20px;
 }
 .modulheader
 {
-	margin: 26px 20px 0;
+	margin: 29px 20px 0;
 	border: 2px solid #1505A5;
 	float: inherit;
 	padding: 2px 5px 3px;
@@ -83,4 +84,30 @@ BODY
 .current_menu A
 {
 	text-decoration: none;
+}
+.modulmenu
+{
+	float: left;
+	margin: 0 5px 0px 0;
+	color: #EF1919;
+}
+#modulmenu
+{
+	margin: 6px 20px 15px 22px;
+}
+.modulmenu
+{
+	background-color: #A3BCF3;
+	border: 2px solid #2259D2;
+	padding: 4px;
+}
+.modulmenu A
+{
+	text-decoration: none;
+	font-size: 7.6pt;
+}
+.notification
+{
+	background-color: #F5FD3F;
+	color: #020202;
 }
