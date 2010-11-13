@@ -40,7 +40,7 @@ echo form_open('account/delete_controller/deleteAccount',$attributes);?>
 	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('search', 'Search');?></td>
+	<td><?php echo form_submit('delete', 'Delete');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

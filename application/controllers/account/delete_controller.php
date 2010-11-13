@@ -21,24 +21,26 @@ class Delete_controller extends Controller {
 	}
 	
 	function deleteAccount(){
-	//TODO delee
+	
 		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('password','Password','required');
 		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Input Invalid";
 		}
 		else{
 			$username=$this->input->get_post('username');
-			$password=$this->input->get_post('password');
-			$role_name=$this->input->get_post('jabatan');
-			$this->account_model->create_account($username,SHA1($password),$role_name);
-			$m_data['notification_message']="Account successfully created";
+			$status = $this->account_model->delete_account($username);
+			if ($status != 0 ){
+				$m_data['notification_message']="Account successfully deleted";
+			}
+			else{
+				$m_data['notification_message']="User Not Found";
+			}
 		}			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
 		$this->load->view('admin/header.php',$h_data);
-		$this->load->view('account/add.php',$m_data);
+		$this->load->view('account/delete.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
 	}
 }
