@@ -8,6 +8,10 @@
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/add_controller"> ADD</a></div> 
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/search_controller"> SEARCH</a></div>
+	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/update_controller"> UPDATE</a></div>
+	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/delete_controller"> DELETE</a></div>
 </div>
 	
 <div class="modulheader">

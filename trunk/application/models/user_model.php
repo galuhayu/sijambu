@@ -13,6 +13,7 @@ class User_model extends Model
 		$this->db->select('user_id');
 		$this->db->where('username', $username);
 		$this->db->where('password', SHA1($userpass));
+		$this->db->where('isDelete', 0);
 		$query = $this->db->get('user');
 		
 		if( $query->num_rows() != 0 ) {

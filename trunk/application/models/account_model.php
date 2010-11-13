@@ -25,13 +25,22 @@ class Account_model extends Model
 		}
 		return 0;
 	}
+	
+	function delete_account ($username){
+		$query = $this->db->query("SELECT * FROM user WHERE username = '$username'");
+		if ($query->num_rows()!=0)
+			$this->db->query("UPDATE user SET isDelete = 1 WHERE username = '$username'");
+		else 
+			return 0;
+		return 1;
+	}
 	/**
 	 * get the roles from the username
 	 *
 	 */
 	function get_roles( $userid ) {
 		$query = $this->db->query("SELECT role.role_name FROM role, user_role WHERE 
-				user_role.user_id = '$userid' AND user_role.role_id = role.role_id");
+				user_role.user_id = '$userid' AND user_role.role_id = role.role_id AND isDelete = 0" );
 		
 		if( $query->num_rows() != 0 ) {
 			return $query->result_array(); 
@@ -45,7 +54,7 @@ class Account_model extends Model
 	 */
 	function get_users() {
     
-		$query = $this->db->query("SELECT user.username, user.user_id FROM user");
+		$query = $this->db->query("SELECT user.username, user.user_id FROM user WHERE isDelete = 0");
 		
 		if( $query->num_rows() != 0 ) {
 			return $query->result_array(); 
