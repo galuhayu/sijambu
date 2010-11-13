@@ -15,7 +15,13 @@
 			    'id' => 'password',
 			);    
 ?>
-<div id = "middlemenu">
+<div class="modulheader">
+LOGIN
+</div>
+<div class="content">
+<div class="notification">
+<?php echo $notification_message;?>
+</div>
 <?php echo form_open('login_controller/verify',$attributes);?>
 <table id="form">
 	<tr>
