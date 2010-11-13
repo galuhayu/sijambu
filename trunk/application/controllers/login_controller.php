@@ -15,6 +15,7 @@ class Login_controller extends Controller {
 			redirect('home_controller');
 		}
 		elseif ($this->input->post('login') && $this->session->userdata('logged_in')==FALSE){
+			
 			$username=$this->input->get_post('username');
 			$password=$this->input->get_post('password');
 			$userid=$this->user_model->user_check($username,$password);
@@ -54,27 +55,25 @@ class Login_controller extends Controller {
 					
 				endforeach;
 				
-				if ($roles!=0){
-					$arrUserData = array(
-						'username' => $username,
-						'userid' => $userid,
-						'user_access' => $arrUserAccess,
-						'logged_in' => TRUE,
-						'current_menu' => 'HOME',
-						'current_modulmenu' => 'ABOUT',
-						'current_submodulmenu' => '',
-						'style' => $userstyle);
-					$this->session->set_userdata($arrUserData);
-					redirect('home_controller');
-				}
-				else{
-					$m_data['message'] = 'Fail to login';
-					$this->load->view(home_view,$m_data);
-				}
+				$arrUserData = array(
+					'username' => $username,
+					'userid' => $userid,
+					'user_access' => $arrUserAccess,
+					'logged_in' => TRUE,
+					'current_menu' => 'HOME',
+					'current_modulmenu' => 'ABOUT',
+					'current_submodulmenu' => '',
+					'style' => $userstyle);
+				$this->session->set_userdata($arrUserData);
+				redirect('home_controller');					
 			}
-			              
 		}
-		redirect('home_controller');
+		$h_data['style']="simpel-herbal.css";
+		$m_data['notification_message'] = "Incorrect username / password";
+		$f_data['author']="ade";
+		$this->load->view('admin/header.php',$h_data);
+		$this->load->view('home_view',$m_data);
+		$this->load->view('admin/footer.php',$f_data);					
 	}
 }
 
