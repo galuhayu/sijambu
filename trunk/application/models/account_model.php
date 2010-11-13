@@ -15,6 +15,16 @@ class Account_model extends Model
 		$role_id = $role_id[0]['role_id'];
 		$query = $this->db->query("INSERT INTO user_role (user_id, role_id) VALUES ($user_id, $role_id)");
 	}
+	
+	
+	function search_account ($username){
+		
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username = '$username' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
+	}
 	/**
 	 * get the roles from the username
 	 *
