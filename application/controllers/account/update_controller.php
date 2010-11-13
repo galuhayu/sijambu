@@ -14,6 +14,7 @@ class Update_controller extends Controller {
 		$this->session->set_userdata('current_menu','ACCOUNT');
 		$h_data['style']="simpel-herbal.css";
 		$m_data['notification_message']="";
+		$m_data['content'] = "";
 		$f_data['author']="ade";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('account/update.php',$m_data);
@@ -21,24 +22,47 @@ class Update_controller extends Controller {
 	}
 	
 	function updateAccount(){
-	//TODO update
-		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('password','Password','required');
+		$m_data['notification_message']="";
+		$m_data['content'] = "";
 		
-		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
-		}
-		else{
 			$username=$this->input->get_post('username');
-			$password=$this->input->get_post('password');
 			$role_name=$this->input->get_post('jabatan');
-			$this->account_model->create_account($username,SHA1($password),$role_name);
-			$m_data['notification_message']="Account successfully created";
-		}			
+			$this->account_model->update_account($username,$role_name);
+			$m_data['notification_message']="Account successfully updated";
+				
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
 		$this->load->view('admin/header.php',$h_data);
-		$this->load->view('account/add.php',$m_data);
+		$this->load->view('account/update.php',$m_data);
+		$this->load->view('admin/footer.php',$f_data);
+		
+	}
+	
+	//COPY FROM SEARCH CONTROLLER
+	function searchAccount(){
+		$m_data['notification_message']="";
+		$m_data['content'] = "";
+		
+		$this->form_validation->set_rules('username','Username','required');
+		if ($this->form_validation->run()==FALSE){
+			$m_data['notification_message']="Enter Username To Search";
+		}
+		else{
+			$username=$this->input->get_post('username');
+			$data = $this->account_model->search_account($username);
+			if ($data !=0 ){
+				foreach ($data as $userdata) :
+					$m_data['content'] = $userdata;
+				endforeach;
+			}
+			else{
+				$m_data['notification_message']="User Not Found";
+			}
+		}
+		$h_data['style']="simpel-herbal.css";
+		$f_data['author']="ade";
+		$this->load->view('admin/header.php',$h_data);
+		$this->load->view('account/update.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
 	}
 }
