@@ -68,8 +68,14 @@ echo form_open('account/search_controller/searchAccount',$attributes);?>
 
 		'table_close'         => '</table>'
 	);
+	$this->table->set_template($tmpl);
+	
 $this->table->set_heading('Username','Jabatan');
 $this->table->add_row($content['username'],$content['role_name']);
+$this->table->add_row($content['username'],$content['role_name']);
+$this->table->add_row($content['username'],$content['role_name']);
+$this->table->add_row($content['username'],$content['role_name']);
+
 
 echo $this->table->generate();
 }

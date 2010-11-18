@@ -53,4 +53,12 @@ class Account_model extends Model
 		
 		$this->db->query("UPDATE user_role SET role_id = '$newroleid' WHERE user_role_id= '$userroleid'");
 	}
+	
+	function list_account(){
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
+	}
 }
