@@ -63,7 +63,7 @@ echo "Welcome, ".$this->session->userdata('username');
 	
 	<?php if(element('ACCOUNT',$this->session->userdata('user_access'))) {
 	if( $this->session->userdata('current_menu') == 'ACCOUNT' ) $type = 'current_menu'; else $type = 'active_menu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/add_controller"> ACCOUNT</a></div>            
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/home_controller"> ACCOUNT</a></div>            
 	<?php }else {?>  
 	<div class="inactive_menu">ACCOUNT</div>
 	<?php }?>
