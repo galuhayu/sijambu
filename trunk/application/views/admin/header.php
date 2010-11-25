@@ -26,7 +26,7 @@ echo "Welcome, ".$this->session->userdata('username');
 
 	<?php if(element('BUKU',$this->session->userdata('user_access'))) {
 	if( $this->session->userdata('current_menu') == 'BUKU' ) $type = 'current_menu'; else $type = 'active_menu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/buku/main_controller"> BUKU</a></div>            
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/buku/home_controller"> BUKU</a></div>            
 	<?php }else {?>  
 	<div class="inactive_menu">BUKU</div>
 	<?php }?>
@@ -34,7 +34,7 @@ echo "Welcome, ".$this->session->userdata('username');
 
 	<?php if(element('MEMBER',$this->session->userdata('user_access'))) {
 	if( $this->session->userdata('current_menu') == 'MEMBER' ) $type = 'current_menu'; else $type = 'active_menu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/main_controller"> MEMBER</a></div>            
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/home_controller"> MEMBER</a></div>            
 	<?php }else {?>  
 	<div class="inactive_menu">MEMBER</div>
 	<?php }?>
