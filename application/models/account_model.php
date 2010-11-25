@@ -5,7 +5,7 @@ class Account_model extends Model
 		parent::Model();
 	}
 	
-	function create_account ($username, $password,$role_name){
+	function create_account ($username, $password,$role_name, $nama,$alamat,$nohp){
 		$query = $this->db->query("INSERT INTO user (username, password, strStyle) VALUES ('$username', '$password', 'herbal')");
 		$query = $this->db->query("SELECT user_id FROM user WHERE username='$username'");
 		$user_id = $query->result_array();

@@ -31,7 +31,10 @@ class Add_controller extends Controller {
 			$username=$this->input->get_post('username');
 			$password=$this->input->get_post('password');
 			$role_name=$this->input->get_post('jabatan');
-			$this->account_model->create_account($username,SHA1($password),$role_name);
+			$nama=$this->input->get_post('name');
+			$nohp=$this->input->get_post('telp');
+			$alamat=$this->input->get_post('address');
+			$this->account_model->create_account($username,SHA1($password),$role_name,$nama,$alamat,$nohp);
 			$m_data['notification_message']="Account successfully created";
 		}			
 		$h_data['style']="simpel-herbal.css";

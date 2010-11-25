@@ -49,9 +49,9 @@ if ($content!=""){
 	);
 	$this->table->set_template($tmpl);
 	
-	$this->table->set_heading('Username','Jabatan');
+	$this->table->set_heading('Username','Name','Jabatan','No Hp','Alamat');
 	foreach ($content as $account):
-		$this->table->add_row($account['username'],$account['role_name']);
+		$this->table->add_row($account['username'],$account['nama'],$account['role_name'],$account['nohp'],$account['alamat']);
 	endforeach;
 	echo $this->table->generate();
 }
