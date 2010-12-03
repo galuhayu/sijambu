@@ -19,7 +19,7 @@ class Account_model extends Model
 	
 	function search_account ($username){
 		
-		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username = '$username' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username LIKE '%$username%' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -54,6 +54,15 @@ class Account_model extends Model
 		$newroleid = $row->role_id;
 		
 		$this->db->query("UPDATE user_role SET role_id = '$newroleid' WHERE user_role_id= '$userroleid'");
+	}
+	
+	function search_account_update ($username){
+		
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username='$username' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
 	}
 	
 	function list_account(){

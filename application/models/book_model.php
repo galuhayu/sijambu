@@ -20,7 +20,7 @@ class Book_model extends Model
 	}
 	
 	function search_buku_by_id ($field){
-		$query = $this->db->query("SELECT * FROM buku WHERE idbuku='$field'");
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku LIKE '%$field%'");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -28,13 +28,25 @@ class Book_model extends Model
 	}
 	
 	function search_buku_by_judul ($field){
-		$query = $this->db->query("SELECT * FROM buku WHERE namabuku='$field'");
+		$query = $this->db->query("SELECT * FROM buku WHERE namabuku LIKE '%$field%'");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
 		return 0;
 	}
 	
+	function update_buku ($idbuku, $namabuku,$pengarang, $hargasewa,$lama){
+		$query=$this->db->query("UPDATE buku SET namabuku='$namabuku', pengarang='$pengarang', hargasewa=$hargasewa, lama=$lama WHERE idbuku=$idbuku");
+	}
+	
+	function search_buku_by_id_update ($field){
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= '$field'");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
+	}
+
 	function delete_buku($idbuku){
 		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= $idbuku");
 		if ($query->num_rows()!=0)
