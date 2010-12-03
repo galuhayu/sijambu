@@ -32,10 +32,14 @@ class Search_controller extends Controller {
 		else{
 			$username=$this->input->get_post('username');
 			$data = $this->account_model->search_account($username);
+			$id = 0;
 			if ($data !=0 ){
+				$id++;
 				foreach ($data as $userdata) :
-					$m_data['content'] = $userdata;
+					$temp[$id] = $userdata;
+					$id++;
 				endforeach;
+				$m_data['content'] = $temp;
 			}
 			else{
 				$m_data['notification_message']="User Not Found";
