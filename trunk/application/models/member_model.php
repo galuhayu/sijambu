@@ -20,7 +20,7 @@ class Member_model extends Model
 	}
 	
 	function search_member_by_id ($field){
-		$query = $this->db->query("SELECT * FROM member WHERE idmember='$field'");
+		$query = $this->db->query("SELECT * FROM member WHERE idmember LIKE '%$field%'");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -28,7 +28,7 @@ class Member_model extends Model
 	}
 	
 	function search_member_by_judul ($field){
-		$query = $this->db->query("SELECT * FROM member WHERE namamember='$field'");
+		$query = $this->db->query("SELECT * FROM member WHERE namamember LIKE '%$field%'");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
