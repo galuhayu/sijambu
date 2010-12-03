@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2010 at 12:43 PM
--- Server version: 5.1.37
--- PHP Version: 5.3.0
+-- Generation Time: Dec 02, 2010 at 08:39 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -26,7 +26,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `buku` (
-  `idbook` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  `idbuku` int(10) NOT NULL AUTO_INCREMENT,
   `namabuku` varchar(30) COLLATE latin1_general_ci NOT NULL,
   `pengarang` varchar(30) COLLATE latin1_general_ci NOT NULL,
   `hargasewa` int(11) NOT NULL,
@@ -35,13 +35,21 @@ CREATE TABLE IF NOT EXISTS `buku` (
   `flag` tinyint(1) NOT NULL,
   `lama` int(11) NOT NULL DEFAULT '0',
   `jumpinjam` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idbook`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  PRIMARY KEY (`idbuku`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `buku`
 --
 
+INSERT INTO `buku` (`idbuku`, `namabuku`, `pengarang`, `hargasewa`, `status`, `tglkembali`, `flag`, `lama`, `jumpinjam`) VALUES
+(1, 'One piece vol 1', 'yuyu', 2000, 1, '0000-00-00', 0, 3, 0),
+(3, 'Harry Potter vol1', 'Jk. Rowling', 6000, 1, '0000-00-00', 0, 5, 0),
+(4, 'special A vol 1', 'lili', 1200, 1, '0000-00-00', 0, 3, 0),
+(5, 'Twilight', 'stephanie M.', 8000, 1, '0000-00-00', 0, 5, 0),
+(6, 'Detektive conan vol1', 'asusu', 1500, 1, '0000-00-00', 1, 3, 0),
+(7, 'Naruto vol 1', 'Ajimame', 2000, 1, '0000-00-00', 0, 3, 0),
+(8, 'Bleach vol 1', 'Anatawa', 1600, 1, '0000-00-00', 0, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -50,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `buku` (
 --
 
 CREATE TABLE IF NOT EXISTS `member` (
-  `idmember` varchar(20) COLLATE latin1_general_ci NOT NULL,
+  `idmember` int(10) NOT NULL AUTO_INCREMENT,
   `namamember` varchar(15) COLLATE latin1_general_ci NOT NULL,
   `jeniskelamin` tinyint(1) NOT NULL,
   `telepon` varchar(15) COLLATE latin1_general_ci NOT NULL,
@@ -59,12 +67,19 @@ CREATE TABLE IF NOT EXISTS `member` (
   `tgllahir` date DEFAULT NULL,
   `statusmember` tinyint(1) NOT NULL,
   PRIMARY KEY (`idmember`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `member`
 --
 
+INSERT INTO `member` (`idmember`, `namamember`, `jeniskelamin`, `telepon`, `alamat`, `tempatlahir`, `tgllahir`, `statusmember`) VALUES
+(1, 'yulianti', 2, '08192777777', 'Depok', 'Palembang', '1989-01-20', 0),
+(2, 'Ade Saputra', 1, '0819747437327', 'Depok', 'Jambi', '1989-04-01', 0),
+(3, 'Luki', 1, '090909090909', 'Jakarta', 'Jakarta', '1989-01-13', 0),
+(4, 'alfian', 1, '0891234566', 'Depok', 'Bandung', '1989-06-02', 0),
+(5, 'Rinaldi', 1, '0718274656', 'Jakarta', 'Jakarta', '1989-07-14', 0),
+(6, 'Risda', 2, '09586778574', 'Depok', 'palembang', '1989-12-13', 0);
 
 -- --------------------------------------------------------
 
@@ -87,6 +102,31 @@ INSERT INTO `role` (`role_id`, `role_name`) VALUES
 (2, 'pegawai_toko'),
 (3, 'pemilik_toko'),
 (4, 'pengelola_toko');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE IF NOT EXISTS `transaksi` (
+  `idtransaksi` int(10) NOT NULL AUTO_INCREMENT,
+  `idmember` int(10) DEFAULT NULL,
+  `idbuku` int(10) DEFAULT NULL,
+  `tipepinjam` int(11) DEFAULT NULL,
+  `tglpinjam` date DEFAULT NULL,
+  `tglkembali` date DEFAULT NULL,
+  `harga` int(11) DEFAULT '0',
+  `denda` int(11) DEFAULT '0',
+  PRIMARY KEY (`idtransaksi`),
+  KEY `idmember` (`idmember`),
+  KEY `idbuku` (`idbuku`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `transaksi`
+--
+
 
 -- --------------------------------------------------------
 
@@ -130,7 +170,9 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `user_role_id` int(5) NOT NULL AUTO_INCREMENT,
   `user_id` int(5) NOT NULL,
   `role_id` int(5) NOT NULL,
-  PRIMARY KEY (`user_role_id`)
+  PRIMARY KEY (`user_role_id`),
+  KEY `role_id` (`role_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
 
 --
@@ -145,6 +187,29 @@ INSERT INTO `user_role` (`user_role_id`, `user_id`, `role_id`) VALUES
 (14, 28, 4),
 (15, 29, 3),
 (16, 30, 2);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `role`
+--
+ALTER TABLE `role`
+  ADD CONSTRAINT `FK_role` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`role_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `FK_transaksi1` FOREIGN KEY (`idmember`) REFERENCES `member` (`idmember`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_transaksi` FOREIGN KEY (`idbuku`) REFERENCES `buku` (`idbuku`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_role` (`user_id`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
