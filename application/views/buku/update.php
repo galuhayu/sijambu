@@ -91,7 +91,7 @@ echo form_open('buku/update_controller/searchBuku',$attributes);?>
 echo form_open('buku/update_controller/updateBuku',$attributes);?>
 <table id="form">
 	<tr>
-	<td>No Buku</td><td>: <?php echo form_input($field1); ?></td>
+	<td>ID Buku</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	
 	<tr>
