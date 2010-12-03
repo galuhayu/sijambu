@@ -25,62 +25,46 @@ ADD
 <legend>Book Information</legend>
 
 <?php 
-	$attributes = array('id' => 'register_form');
+	$attributes = array('id' => 'buku_add_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'namabuku',
+	'id' => 'namabuku',
 	'rules' => 'required',
 	);
 	$field2 = array(
-	'type' => 'password',  
-	'name' => 'password',
-	'id' => 'password',
+	'type' => 'text',  
+	'name' => 'pengarang',
+	'id' => 'pengarang',
 	'rules' => 'required',
 	);
 	$field3 = array(
 	'type' => 'text',  
-	'name' => 'name',
-	'id' => 'name',
+	'name' => 'hargasewa',
+	'id' => 'hargasewa',
 	);
 	$field4 = array(
 	'type' => 'text',  
-	'name' => 'address',
-	'id' => 'address',
-	);
-	$field5 = array(
-	'pegawai_toko' => 'Pegawai',  
-	'pemilik_toko' => 'Pemilik',
-	'pengelola_toko' => 'Pengelola',
-	);
-	$field6 = array(
-	'type' => 'text',  
-	'name' => 'telp',
-	'id' => 'telp',
+	'name' => 'lama',
+	'id' => 'lama',
 	);
 
-echo form_open('buku/add_controller/addAccount',$attributes);?>
+echo form_open('buku/add_controller/addBuku',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>Judul Buku</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td>Password</td><td>: <?php echo form_input($field2); ?></td>
+	<td>Pengarang</td><td>: <?php echo form_input($field2); ?></td>
 	</tr>
 	<tr>
-	<td>Nama</td><td>: <?php echo form_input($field3); ?></td>
+	<td>Harga</td><td>: <?php echo form_input($field3); ?></td>
 	</tr>
 	<tr>
-	<td>Alamat</td><td>: <?php echo form_input($field4); ?></td>
+	<td>Lama Sewa</td><td>: <?php echo form_input($field4); ?></td>
 	</tr>
 	<tr>
-	<td>Jabatan</td><td>: <?php echo form_dropdown('jabatan',$field5,'pegawai_toko'); ?></td>
-	</tr>
-	<tr>
-	<td>No telp</td><td>: <?php echo form_input($field6); ?></td>
-	</tr>
-	<tr>
-	<td><?php echo form_submit('register', 'Register');?></td>
+	<td><?php echo form_submit('add', 'Add');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

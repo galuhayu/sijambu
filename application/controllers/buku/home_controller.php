@@ -17,7 +17,18 @@ class Home_controller extends Controller {
 		$m_data['content']="";
 		$f_data['author']="ade";
 		
-		
+		$data = $this->book_model->list_buku();
+		$id=0;
+		if ($data !=0 ){
+			foreach ($data as $bookdata) :
+				$temp[$id] = $bookdata;
+				$id++;
+			endforeach;
+			$m_data['content'] = $temp;
+		}
+		else{
+			$m_data['notification_message']="Book Not Found";
+		}
 		
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('buku/home.php',$m_data);
