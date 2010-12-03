@@ -20,16 +20,23 @@ class Delete_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
-	function deleteAccount(){
+	function deleteMember(){
 	
-		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('idmember','Id Member','required');
 		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Input Invalid";
 		}
 		else{
-			
-		}			
+			$idmember=$this->input->get_post('idmember');
+			$status = $this->member_model->delete_member($idmember);
+			if ($status != 0 ){
+				$m_data['notification_message']="Member successfully deleted";
+			}
+			else{
+				$m_data['notification_message']="Member Not Found";
+			}
+		}		
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
 		$this->load->view('admin/header.php',$h_data);
