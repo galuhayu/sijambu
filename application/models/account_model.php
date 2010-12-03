@@ -35,13 +35,15 @@ class Account_model extends Model
 		return 1;
 	}
 	
-	function update_account ($username, $newrolename){
+	function update_account ($username, $newrolename, $nama , $alamat, $telp){
 		$query = $this->db->query("SELECT user_id FROM user WHERE username = '$username'");
 		if ($query->num_rows()!=0){
 			$row = $query->row();
 			$userid = $row->user_id;
 		}
 		else return 0;
+		
+		$query = $this->db->query ("UPDATE user SET alamat='$alamat' , nama='$nama', nohp='$telp' WHERE username='$username' ");
 		
 		$query = $this->db->query("SELECT user_role_id FROM user_role WHERE user_id= '$userid'");
 		$row=$query->row();
