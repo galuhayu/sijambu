@@ -29,15 +29,30 @@ SEARCH
 	$attributes = array('id' => 'search_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'field',
+	'id' => 'field',
 	'rules' => 'required',
 	);
+	$field2 = array(
+	'name' => 'tipe',
+	'id' => 'tipe',
+	'value' =>'id',
+	'checked' => TRUE,
+	);
+	$field21 = array(
+	'name' => 'tipe',
+	'id' => 'tipe',
+	'value' =>'judul',
+	'checked' => FALSE,
+	);
 
-echo form_open('buku/search_controller/searchAccount',$attributes);?>
+echo form_open('buku/search_controller/searchBuku',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>Search by </td><td>: <?php echo form_radio($field2); ?> Id buku <?php echo form_radio($field21);?> Judul Buku</td>
+	</tr>
+	<tr>
+	<td>Field</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
 	<td><?php echo form_submit('search', 'Search');?></td>
@@ -70,12 +85,16 @@ echo form_open('buku/search_controller/searchAccount',$attributes);?>
 	);
 	$this->table->set_template($tmpl);
 	
-$this->table->set_heading('Username','Jabatan');
-$this->table->add_row($content['username'],$content['role_name']);
-$this->table->add_row($content['username'],$content['role_name']);
-$this->table->add_row($content['username'],$content['role_name']);
-$this->table->add_row($content['username'],$content['role_name']);
-
+$this->table->set_heading('No Buku','Judul Buku','Pengarang','Harga','Status','Lama Sewa','Tanggal Kembali');
+foreach ($content as $book):
+	if ($book['status']== 1){
+		$book['status'] = "tersedia";
+	}
+	else{
+		$book['status'] = "kosong";
+	}
+	$this->table->add_row($book['idbuku'],$book['namabuku'],$book['pengarang'],$book['status'],$book['hargasewa'],$book['lama'],$book['tglkembali']);
+endforeach;
 
 echo $this->table->generate();
 }
