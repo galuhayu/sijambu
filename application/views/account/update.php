@@ -66,11 +66,13 @@ echo form_open('account/update_controller/searchAccount',$attributes);?>
 	$field3 = array(
 	'type' => 'text',  
 	'name' => 'name',
+	'value' => $content['nama'],
 	'id' => 'name',
 	);
 	$field4 = array(
 	'type' => 'text',  
 	'name' => 'address',
+	'value' => $content['alamat'],
 	'id' => 'address',
 	);
 	$field5 = array(
@@ -81,6 +83,7 @@ echo form_open('account/update_controller/searchAccount',$attributes);?>
 	$field6 = array(
 	'type' => 'text',  
 	'name' => 'telp',
+	'value' => $content['nohp'],
 	'id' => 'telp',
 	);
 

@@ -70,12 +70,8 @@ echo form_open('account/search_controller/searchAccount',$attributes);?>
 	);
 	$this->table->set_template($tmpl);
 	
-$this->table->set_heading('Username','Jabatan');
-$this->table->add_row($content['username'],$content['role_name']);
-$this->table->add_row($content['username'],$content['role_name']);
-$this->table->add_row($content['username'],$content['role_name']);
-$this->table->add_row($content['username'],$content['role_name']);
-
+$this->table->set_heading('Username','Nama', 'Alamat', 'Jabatan', 'No telp');
+$this->table->add_row($content['username'],$content['nama'],$content['alamat'],$content['role_name'],$content['nohp']);
 
 echo $this->table->generate();
 }
