@@ -31,15 +31,15 @@ UPDATE
 	$attributes = array('id' => 'search_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'idmember',
+	'id' => 'idmember',
 	'rules' => 'required',
 	);
 
-echo form_open('account/update_controller/searchAccount',$attributes);?>
+echo form_open('member/update_controller/searchMember',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>ID Member</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
 	<td><?php echo form_submit('find', 'Find');?></td>
@@ -57,50 +57,101 @@ echo form_open('account/update_controller/searchAccount',$attributes);?>
 	$attributes = array('id' => 'register_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'idmember',
+	'id' => 'idmember',
 	'readonly' => 'readonly',
-	'value' => $content['username'],
+	'value' => $content['idmember'],
 	'rules' => 'required',
 	);
+	
+	if($content['jeniskelamin']==1){
+		$field2 = array(
+		'name' => 'jeniskelamin',
+		'id' => 'jeniskelamin',
+		'value' =>'male',
+		'checked' => TRUE,
+		);
+		$field21 = array(
+		'name' => 'jeniskelamin',
+		'id' => 'jeniskelamin',
+		'value' =>'female',
+		'checked' => FALSE,
+		);	
+	}
+	else{
+		$field2 = array(
+		'name' => 'jeniskelamin',
+		'id' => 'jeniskelamin',
+		'value' =>'male',
+		'checked' => FALSE,
+		);
+		$field21 = array(
+		'name' => 'jeniskelamin',
+		'id' => 'jeniskelamin',
+		'value' =>'female',
+		'checked' => TRUE,
+		);	
+	}
+	
+	
 	$field3 = array(
 	'type' => 'text',  
-	'name' => 'name',
-	'id' => 'name',
+	'name' => 'telepon',
+	'id' => 'telepon',
+	'value' => $content['telepon'],
 	);
+	
+	
 	$field4 = array(
 	'type' => 'text',  
-	'name' => 'address',
-	'id' => 'address',
+	'name' => 'alamat',
+	'id' => 'alamat',
+	'value' => $content['alamat'],
 	);
+	
 	$field5 = array(
-	'pegawai_toko' => 'Pegawai',  
-	'pemilik_toko' => 'Pemilik',
-	'pengelola_toko' => 'Pengelola',
+	'type' => 'text',  
+	'name' => 'tempatlahir',
+	'id' => 'tempatlahir',
+	'value' => $content['tempatlahir'],
 	);
 	$field6 = array(
 	'type' => 'text',  
-	'name' => 'telp',
-	'id' => 'telp',
+	'name' => 'tgllahir',
+	'id' => 'tgllahir',
+	'value' => $content['tgllahir'],
+	);
+	
+	$field7 = array(
+	'type' => 'text',  
+	'name' => 'namamember',
+	'id' => 'namamember',
+	'value' => $content['namamember'],
 	);
 
-echo form_open('account/update_controller/updateAccount',$attributes);?>
+echo form_open('member/update_controller/updateMember',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>ID member</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	
 	<tr>
-	<td>Nama</td><td>: <?php echo form_input($field3); ?></td>
+	<td>Nama Member</td><td>: <?php echo form_input($field7); ?></td>
+	</tr>
+	<tr>
+	<td>Jenis Kelamin</td><td>: <?php echo form_radio($field2); ?> Pria <?php echo form_radio($field21); ?> Wanita</td>
+	</tr>
+	<tr>
+	<td>Telepon</td><td>: <?php echo form_input($field3); ?></td>
 	</tr>
 	<tr>
 	<td>Alamat</td><td>: <?php echo form_input($field4); ?></td>
 	</tr>
 	<tr>
-	<td>Jabatan</td><td>: <?php echo form_dropdown('jabatan',$field5,$content['role_name']); ?></td>
+	<td>Tempat Lahir</td><td>: <?php echo form_input($field5); ?></td>
 	</tr>
 	<tr>
-	<td>No telp</td><td>: <?php echo form_input($field6); ?></td>
+	<td>Tanggal Lahir</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
 	<td><?php echo form_submit('update', 'Update');?></td>

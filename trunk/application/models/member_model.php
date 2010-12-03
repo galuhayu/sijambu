@@ -43,4 +43,18 @@ class Member_model extends Model
 			return 0;
 		return 1;
 	}
+	
+	
+	function search_member_by_id_update ($field){
+		$query = $this->db->query("SELECT * FROM member WHERE idmember= '$field'");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
+	}
+	
+	
+	function update_member ($idmember, $namamember,$jeniskelamin, $telepon,$alamat,$tempatlahir,$tgllahir){
+		$query=$this->db->query("UPDATE member SET namamember='$namamember', jeniskelamin='$jeniskelamin', telepon='$telepon', alamat='$alamat', tempatlahir='$tempatlahir', tgllahir=$tgllahir WHERE idmember=$idmember");
+	}
 }
