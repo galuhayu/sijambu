@@ -35,4 +35,13 @@ class Book_model extends Model
 		return 0;
 	}
 	
+	function delete_buku($idbuku){
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= $idbuku");
+		if ($query->num_rows()!=0)
+			$this->db->query("UPDATE buku SET flag = 1 WHERE idbuku = $idbuku");
+		else 
+			return 0;
+		return 1;
+	}
+	
 }
