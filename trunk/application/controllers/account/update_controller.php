@@ -27,7 +27,10 @@ class Update_controller extends Controller {
 		
 			$username=$this->input->get_post('username');
 			$role_name=$this->input->get_post('jabatan');
-			$this->account_model->update_account($username,$role_name);
+			$nama = $this->input->get_post('name');
+			$alamat = $this->input->get_post('address');
+			$telp= $this->input->get_post('telp');
+			$this->account_model->update_account($username,$role_name, $nama, $alamat, $telp);
 			$m_data['notification_message']="Account successfully updated";
 				
 		$h_data['style']="simpel-herbal.css";
