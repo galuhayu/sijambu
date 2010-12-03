@@ -19,4 +19,20 @@ class Book_model extends Model
 		return $query->result_array();
 	}
 	
+	function search_buku_by_id ($field){
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku='$field'");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
+	}
+	
+	function search_buku_by_judul ($field){
+		$query = $this->db->query("SELECT * FROM buku WHERE namabuku='$field'");
+		if ($query->num_rows() !=0 ) {
+			return $query->result_array();
+		}
+		return 0;
+	}
+	
 }

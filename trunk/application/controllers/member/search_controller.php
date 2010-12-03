@@ -21,10 +21,34 @@ class Search_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
-	function searchAccount(){
+	function searchMember(){
 		$m_data['notification_message']="";
 		$m_data['content'] = "";
 		
+		$this->form_validation->set_rules('field','Field','required');
+		if ($this->form_validation->run()==FALSE){
+			$m_data['notification_message']="Enter Field To Search";
+		}
+		else{
+			$field=$this->input->get_post('field');
+			$tipe=$this->input->get_post('tipe');
+			if ($tipe == 'id'){
+				$data = $this->member_model->search_member_by_id($field);
+			}else{
+				$data = $this->member_model->search_member_by_judul($field);
+			}
+			$id = 0;
+			if ($data !=0 ){
+				foreach ($data as $memberdata) :
+					$temp[$id] = $memberdata;
+					$id++;
+				endforeach;
+				$m_data['content'] = $temp;
+			}
+			else{
+				$m_data['notification_message']="Member Not Found";
+			}
+		}
 		
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
