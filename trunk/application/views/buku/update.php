@@ -31,15 +31,15 @@ UPDATE
 	$attributes = array('id' => 'search_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'idbuku',
+	'id' => 'idbuku',
 	'rules' => 'required',
 	);
 
-echo form_open('buku/update_controller/searchAccount',$attributes);?>
+echo form_open('buku/update_controller/searchBuku',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>ID Book</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
 	<td><?php echo form_submit('find', 'Find');?></td>
@@ -54,53 +54,57 @@ echo form_open('buku/update_controller/searchAccount',$attributes);?>
 <legend>Account Information</legend>
 
 <?php 
-	$attributes = array('id' => 'register_form');
+	$attributes = array('id' => 'update_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'idbuku',
+	'id' => 'idbuku',
 	'readonly' => 'readonly',
-	'value' => $content['username'],
+	'value' => $content['idbuku'],
 	'rules' => 'required',
 	);
 	$field3 = array(
 	'type' => 'text',  
-	'name' => 'name',
-	'id' => 'name',
+	'name' => 'namabuku',
+	'value' => $content['namabuku'],
+	'id' => 'namabuku',
 	);
 	$field4 = array(
 	'type' => 'text',  
-	'name' => 'address',
-	'id' => 'address',
+	'name' => 'pengarang',
+	'value' => $content['pengarang'],
+	'id' => 'pengarang',
 	);
 	$field5 = array(
-	'pegawai_toko' => 'Pegawai',  
-	'pemilik_toko' => 'Pemilik',
-	'pengelola_toko' => 'Pengelola',
+	'type' => 'text',  
+	'name' => 'hargasewa',
+	'value' => $content['hargasewa'],
+	'id' => 'hargasewa',
 	);
 	$field6 = array(
 	'type' => 'text',  
-	'name' => 'telp',
-	'id' => 'telp',
+	'name' => 'lama',
+	'value' => $content['lama'],
+	'id' => 'lama',
 	);
 
-echo form_open('account/update_controller/updateAccount',$attributes);?>
+echo form_open('buku/update_controller/updateBuku',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>No Buku</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	
 	<tr>
-	<td>Nama</td><td>: <?php echo form_input($field3); ?></td>
+	<td>Judul Buku</td><td>: <?php echo form_input($field3); ?></td>
 	</tr>
 	<tr>
-	<td>Alamat</td><td>: <?php echo form_input($field4); ?></td>
+	<td>Pengarang</td><td>: <?php echo form_input($field4); ?></td>
 	</tr>
 	<tr>
-	<td>Jabatan</td><td>: <?php echo form_dropdown('jabatan',$field5,$content['role_name']); ?></td>
+	<td>Harga</td><td>: <?php echo form_input($field5); ?></td>
 	</tr>
 	<tr>
-	<td>No telp</td><td>: <?php echo form_input($field6); ?></td>
+	<td>Lama Sewa</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
 	<td><?php echo form_submit('update', 'Update');?></td>
