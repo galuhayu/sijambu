@@ -6,7 +6,7 @@ class Book_model extends Model
 	}
 	
 	function list_buku(){
-		$query = $this->db->query("SELECT * FROM buku");
+		$query = $this->db->query("SELECT * FROM buku WHERE flag = 0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}

@@ -66,7 +66,7 @@ class Account_model extends Model
 	}
 	
 	function list_account(){
-		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.user_id = user_role.user_id AND role.role_id = user_role.role_id AND isDelete = 0 ");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
