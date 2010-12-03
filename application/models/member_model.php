@@ -6,7 +6,7 @@ class Member_model extends Model
 	}
 	
 	function list_member(){
-		$query = $this->db->query("SELECT * FROM member");
+		$query = $this->db->query("SELECT * FROM member WHERE statusmember = 0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
