@@ -21,10 +21,34 @@ class Search_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
-	function searchAccount(){
+	function searchBuku(){
 		$m_data['notification_message']="";
 		$m_data['content'] = "";
 		
+		$this->form_validation->set_rules('field','Field','required');
+		if ($this->form_validation->run()==FALSE){
+			$m_data['notification_message']="Enter Field To Search";
+		}
+		else{
+			$field=$this->input->get_post('field');
+			$tipe=$this->input->get_post('tipe');
+			if ($tipe == 'id'){
+				$data = $this->book_model->search_buku_by_id($field);
+			}else{
+				$data = $this->book_model->search_buku_by_judul($field);
+			}
+			$id = 0;
+			if ($data !=0 ){
+				foreach ($data as $bookdata) :
+					$temp[$id] = $bookdata;
+					$id++;
+				endforeach;
+				$m_data['content'] = $temp;
+			}
+			else{
+				$m_data['notification_message']="Book Not Found";
+			}
+		}
 		
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
