@@ -28,59 +28,68 @@ ADD
 	$attributes = array('id' => 'register_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'namamember',
+	'id' => 'namamember',
 	'rules' => 'required',
 	);
 	$field2 = array(
-	'type' => 'password',  
-	'name' => 'password',
-	'id' => 'password',
-	'rules' => 'required',
+	'name' => 'jeniskelamin',
+	'id' => 'jeniskelamin',
+	'value' =>'male',
+	'checked' => TRUE,
 	);
+	$field21 = array(
+	'name' => 'jeniskelamin',
+	'id' => 'jeniskelamin',
+	'value' =>'female',
+	'checked' => FALSE,
+	);
+	
 	$field3 = array(
 	'type' => 'text',  
-	'name' => 'name',
-	'id' => 'name',
+	'name' => 'telepon',
+	'id' => 'telepon',
+	'rules' => 'required',
 	);
 	$field4 = array(
 	'type' => 'text',  
-	'name' => 'address',
-	'id' => 'address',
+	'name' => 'alamat',
+	'id' => 'alamat',
+	'rules' => 'required',
 	);
 	$field5 = array(
-	'pegawai_toko' => 'Pegawai',  
-	'pemilik_toko' => 'Pemilik',
-	'pengelola_toko' => 'Pengelola',
+	'type' => 'text',  
+	'name' => 'tempatlahir',
+	'id' => 'tempatlahir',
 	);
 	$field6 = array(
 	'type' => 'text',  
-	'name' => 'telp',
-	'id' => 'telp',
+	'name' => 'tgllahir',
+	'id' => 'tgllahir',
 	);
 
-echo form_open('account/add_controller/addAccount',$attributes);?>
+echo form_open('member/add_controller/addMember',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>Nama Member</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td>Password</td><td>: <?php echo form_input($field2); ?></td>
+	<td>Jenis Kelamin</td><td>: <?php echo form_radio($field2); ?> Pria <?php echo form_radio($field21); ?> Wanita</td>
 	</tr>
 	<tr>
-	<td>Nama</td><td>: <?php echo form_input($field3); ?></td>
+	<td>Telepon</td><td>: <?php echo form_input($field3); ?></td>
 	</tr>
 	<tr>
 	<td>Alamat</td><td>: <?php echo form_input($field4); ?></td>
 	</tr>
 	<tr>
-	<td>Jabatan</td><td>: <?php echo form_dropdown('jabatan',$field5,'pegawai_toko'); ?></td>
+	<td>Tempat lahir</td><td>: <?php echo form_input($field5); ?></td>
 	</tr>
 	<tr>
-	<td>No telp</td><td>: <?php echo form_input($field6); ?></td>
+	<td>Tanggal Lahir</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('register', 'Register');?></td>
+	<td><?php echo form_submit('add', 'Add');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

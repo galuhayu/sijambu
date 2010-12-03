@@ -12,4 +12,10 @@ class Member_model extends Model
 		}
 		return 0;
 	}
+	
+	function create_member($namamember,$telepon,$alamat,$tempatlahir,$tgllahir,$jeniskelamin){
+		$query = $this->db->query("INSERT INTO member (namamember,jeniskelamin,telepon,alamat,tempatlahir,tgllahir) VALUES ('$namamember', '$jeniskelamin', '$telepon', '$alamat', '$tempatlahir', '$tgllahir')");
+		$query = $this->db->query("SELECT idmember FROM member WHERE namamember='$namamember' AND telepon='$telepon' ");
+		return $query->result_array();
+	}
 }
