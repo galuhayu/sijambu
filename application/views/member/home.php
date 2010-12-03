@@ -49,9 +49,14 @@ if ($content!=""){
 	);
 	$this->table->set_template($tmpl);
 	
-	$this->table->set_heading('Username','Jabatan');
-	foreach ($content as $account):
-		$this->table->add_row($account['username'],$account['role_name']);
+	$this->table->set_heading('No Member','Nama Member','Jenis Kelamin','Telepon','Alamat', 'Tempat Lahir', 'Tanggal Lahir' );
+	foreach ($content as $member):
+		if ($member['jeniskelamin'] == 1){
+			$buku['jeniskelamin'] = "pria";
+		}else{
+			$buku['jeniskelamin'] = "wanita";
+		}
+		$this->table->add_row($member['idmember'],$member['namamember'],$member['jeniskelamin'],$member['telepon'],$member['alamat'],$member['tempatlahir'],$member['tgllahir']);
 	endforeach;
 	echo $this->table->generate();
 }
