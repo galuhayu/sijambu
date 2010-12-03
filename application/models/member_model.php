@@ -55,6 +55,6 @@ class Member_model extends Model
 	
 	
 	function update_member ($idmember, $namamember,$jeniskelamin, $telepon,$alamat,$tempatlahir,$tgllahir){
-		$query=$this->db->query("UPDATE member SET namamember='$namamember', jeniskelamin='$jeniskelamin', telepon='$telepon', alamat='$alamat', tempatlahir='$tempatlahir', tgllahir=$tgllahir WHERE idmember=$idmember");
+		$query=$this->db->query("UPDATE member SET namamember='$namamember', jeniskelamin=$jeniskelamin, telepon='$telepon', alamat='$alamat', tempatlahir='$tempatlahir', tgllahir=$tgllahir WHERE idmember=$idmember");
 	}
 }

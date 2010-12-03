@@ -28,6 +28,12 @@ class Update_controller extends Controller {
 			$idmember=$this->input->get_post('idmember');
 			$namamember=$this->input->get_post('namamember');
 			$jeniskelamin=$this->input->get_post('jeniskelamin');
+			if ($jeniskelamin == 'male'){
+				$jeniskelamin = 1;
+			}
+			else{
+				$jeniskelamin = 2;
+			}
 			$telepon=$this->input->get_post('telepon');
 			$alamat=$this->input->get_post('alamat');
 			$tempatlahir=$this->input->get_post('tempatlahir');
