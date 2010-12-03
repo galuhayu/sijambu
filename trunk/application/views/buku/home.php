@@ -49,9 +49,14 @@ if ($content!=""){
 	);
 	$this->table->set_template($tmpl);
 	
-	$this->table->set_heading('Username','Jabatan');
-	foreach ($content as $account):
-		$this->table->add_row($account['username'],$account['role_name']);
+	$this->table->set_heading('No Buku','Judul Buku', 'Pengarang', 'Harga', 'Status', 'Tanggal Kembali', 'Lama sewa');
+	foreach ($content as $buku):
+		if ($buku['status'] == 0){
+			$buku['status'] = "dipinjam";
+		}else{
+			$buku['status'] = "tersedia";
+		}
+		$this->table->add_row($buku['idbuku'],$buku['namabuku'],$buku['pengarang'],$buku['hargasewa'],$buku['status'],$buku['tglkembali'],$buku['lama'] );
 	endforeach;
 	echo $this->table->generate();
 }

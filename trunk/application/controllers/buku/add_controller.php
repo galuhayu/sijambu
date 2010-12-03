@@ -20,15 +20,23 @@ class Add_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
-	function addAccount(){
-		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('password','Password','required');
+	function addBuku(){
+		$this->form_validation->set_rules('namabuku','Judul Buku','required');
+		$this->form_validation->set_rules('pengarang','Pengarang','required');
+		$this->form_validation->set_rules('hargasewa','Harga','required');
+		$this->form_validation->set_rules('lama','Lama Sewa','required');
 		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Input Invalid";
 		}
 		else{
-			
+			$namabuku = $this->input->get_post('namabuku');
+			$pengarang = $this->input->get_post('pengarang');
+			$hargasewa = $this->input->get_post('hargasewa');
+			$lama = $this->input->get_post('lama');
+			$temp = $this->book_model->create_buku($namabuku,$pengarang,$hargasewa,$lama);
+			$id = $temp[0]['idbuku'];
+			$m_data['notification_message']="Book successfully created with id = ".$id;
 		}			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
