@@ -20,15 +20,31 @@ class Add_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
-	function addAccount(){
-		$this->form_validation->set_rules('username','Username','required');
-		$this->form_validation->set_rules('password','Password','required');
+	function addMember(){
+		$this->form_validation->set_rules('namamember','Nama Member','required');
+		$this->form_validation->set_rules('telepon','Telepon','required');
+		$this->form_validation->set_rules('alamat','Alamat','required');
 		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Input Invalid";
 		}
 		else{
-			
+			$namamember = $this->input->get_post('namamember');
+			$telepon = $this->input->get_post('telepon');
+			$alamat = $this->input->get_post('alamat');
+			$tempatlahir = $this->input->get_post('tempatlahir');
+			$tgllahir = $this->input->get_post('tgllahir');
+			$jeniskelamin = $this->input->get_post('jeniskelamin');
+			if ($jeniskelamin == 'male'){
+				$jeniskelamin = 1;
+			}
+			else {
+				$jeniskelamin = 2;
+			}
+			echo $jeniskelamin;
+			$temp = $this->member_model->create_member($namamember,$telepon,$alamat,$tempatlahir,$tgllahir,$jeniskelamin);
+			$id = $temp[0]['idmember'];
+			$m_data['notification_message']="Member successfully created with id = ".$id;
 		}			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
