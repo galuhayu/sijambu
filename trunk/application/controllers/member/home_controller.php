@@ -17,7 +17,18 @@ class Home_controller extends Controller {
 		$m_data['content']="";
 		$f_data['author']="ade";
 		
-		
+		$data = $this->member_model->list_member();
+		$id=0;
+		if ($data !=0 ){
+			foreach ($data as $memberdata) :
+				$temp[$id] = $memberdata;
+				$id++;
+			endforeach;
+			$m_data['content'] = $temp;
+		}
+		else{
+			$m_data['notification_message']="Member Not Found";
+		}
 		
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('member/home.php',$m_data);
