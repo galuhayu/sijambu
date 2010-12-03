@@ -34,4 +34,13 @@ class Member_model extends Model
 		}
 		return 0;
 	}
+	
+	function delete_member($idmember){
+		$query = $this->db->query("SELECT * FROM member WHERE idmember= $idmember");
+		if ($query->num_rows()!=0)
+			$this->db->query("UPDATE member SET statusmember = 1 WHERE idmember = $idmember");
+		else 
+			return 0;
+		return 1;
+	}
 }

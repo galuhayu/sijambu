@@ -29,15 +29,15 @@ DELETE
 	$attributes = array('id' => 'delete_form');
 	$field1 = array( 
 	'type' => 'text',  
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'idmember',
+	'id' => 'idmember',
 	'rules' => 'required',
 	);
 
-echo form_open('account/delete_controller/deleteAccount',$attributes);?>
+echo form_open('member/delete_controller/deleteMember',$attributes);?>
 <table id="form">
 	<tr>
-	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
+	<td>Id Member</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
 	<td><?php echo form_submit('delete', 'Delete');?></td>
