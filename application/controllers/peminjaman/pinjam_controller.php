@@ -136,7 +136,7 @@ class Pinjam_controller extends Controller {
 		//$temp = $this->peminjaman_model->saveTransaction();
 		
 		$temp = count($content)/5;
-		echo $temp;
+		
 			if ($temp < 1){
 				$m_data['notification_message']="You must enter your id book, please try again";
 			}
