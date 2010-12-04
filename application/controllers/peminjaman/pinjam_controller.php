@@ -128,6 +128,26 @@ class Pinjam_controller extends Controller {
 	}
 	
 	function transaksiSimpan(){
+		$h_data['style']="simpel-herbal.css";
+		$f_data['author']="ade";
+		$m_data['content'] = "";
+		
+		$content = $this->input->get_post('data');
+		//$temp = $this->peminjaman_model->saveTransaction();
+		
+		$temp = count($content)/5;
+		echo $temp;
+			if ($temp < 1){
+				$m_data['notification_message']="You must enter your id book, please try again";
+			}
+			else{
+				$m_data['notification_message'] = "Transaction saved with id transaction = ";
+			}
+		
+		
+		$this->load->view('admin/header.php',$h_data);
+		$this->load->view('peminjaman/home.php',$m_data);
+		$this->load->view('admin/footer.php',$f_data);
 	}
 }
 
