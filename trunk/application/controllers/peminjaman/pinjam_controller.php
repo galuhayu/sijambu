@@ -53,6 +53,7 @@ class Pinjam_controller extends Controller {
 				$m_data['notification_message'] = "";
 				$m_data['tipe'] = $tipe;
 				$m_data['idmember'] = $idmember;
+				$m_data['totalsewa'] = 0;
 				$this->load->view('peminjaman/transaksi.php',$m_data);
 				
 			}
@@ -70,7 +71,8 @@ class Pinjam_controller extends Controller {
 		
 		$prevcontent = $this->input->get_post('data');
 		$id = 0;
-		echo $num;
+		$totalsewa = 0;
+		
 		if ($prevcontent >0){
 			for ($c = 0 ; $c < $num * 5 ; ){
 				$idbuku = $prevcontent[$c]['idbuku'];
@@ -83,6 +85,8 @@ class Pinjam_controller extends Controller {
 				$c++;
 				$lama = $prevcontent[$c]['lama'];
 				$c++;
+				
+				$totalsewa += $hargasewa;
 				
 				$temp[$id] = array ('idbuku' => $idbuku, 'namabuku'=> $namabuku, 'pengarang' => $pengarang, 'hargasewa' => $hargasewa, 'lama' => $lama);
 				$id++;
@@ -100,6 +104,10 @@ class Pinjam_controller extends Controller {
 			$data = $this->peminjaman_model->add_line($idbuku);
 			if ($data != 0){
 				foreach ($data as $buku) :
+					if ($tipe == 1){
+						$buku['hargasewa'] /= 2;
+					}
+					$totalsewa += $buku['hargasewa'];
 					$temp[$id] = $buku;
 					$id++;
 				endforeach;
@@ -112,6 +120,7 @@ class Pinjam_controller extends Controller {
 		$m_data['content'] = $temp;
 		$m_data['tipe'] = $tipe;
 		$m_data['idmember'] = $idmember;
+		$m_data['totalsewa'] = $totalsewa;
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
 		$this->load->view('admin/header.php',$h_data);

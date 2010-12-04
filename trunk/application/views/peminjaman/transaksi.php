@@ -99,8 +99,14 @@ if ($content!=""){
 	'bacatempat' => 'Baca di tempat',
 	);
 
-echo form_open('peminjaman/pinjam_controller/transaksib',$attributes);
+	$hidden = array('data' => $content, 'idmember' => $idmember , 'tipe'=>$tipe ,'num' => count($content) );
+	
+echo form_open('peminjaman/pinjam_controller/transaksiSimpan',$attributes,$hidden);
 ?>
+
+Total = <?php echo $totalsewa;?>
+<br/>
+
 <table id="form2">
 	<tr>
 	<td><?php echo form_submit('simpan', 'Simpan');?></td>
