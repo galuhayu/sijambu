@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2010 at 09:47 PM
+-- Generation Time: Dec 04, 2010 at 02:26 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -30,13 +30,13 @@ CREATE TABLE IF NOT EXISTS `buku` (
   `namabuku` varchar(30) COLLATE latin1_general_ci NOT NULL,
   `pengarang` varchar(30) COLLATE latin1_general_ci NOT NULL,
   `hargasewa` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `tglkembali` date NOT NULL,
   `flag` tinyint(1) NOT NULL,
   `lama` int(11) NOT NULL DEFAULT '0',
   `jumpinjam` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idbuku`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `buku`
@@ -49,7 +49,9 @@ INSERT INTO `buku` (`idbuku`, `namabuku`, `pengarang`, `hargasewa`, `status`, `t
 (5, 'Twilight', 'stephanie M.', 8000, 1, '0000-00-00', 0, 5, 0),
 (6, 'Detektive conan vol1', 'asusu', 1500, 1, '0000-00-00', 1, 3, 0),
 (7, 'Naruto vol 1', 'Ajimame', 2000, 1, '0000-00-00', 0, 3, 0),
-(8, 'Bleach vol 1', 'Anatawa', 1600, 1, '0000-00-00', 0, 3, 0);
+(8, 'Bleach vol 1', 'Anatawa', 1600, 1, '0000-00-00', 0, 3, 0),
+(9, 'cobaAdd', 'cobacoba', 100, 0, '0000-00-00', 0, 10, 0),
+(10, 'OnePiece vol 3', 'aaaa', 1000, 1, '0000-00-00', 0, 2, 0);
 
 -- --------------------------------------------------------
 
