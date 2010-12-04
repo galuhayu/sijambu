@@ -72,7 +72,7 @@ class Pinjam_controller extends Controller {
 		$prevcontent = $this->input->get_post('data');
 		$id = 0;
 		$totalsewa = 0;
-		
+		$temp = "";
 		if ($prevcontent >0){
 			for ($c = 0 ; $c < $num * 5 ; ){
 				$idbuku = $prevcontent[$c]['idbuku'];
@@ -93,7 +93,6 @@ class Pinjam_controller extends Controller {
 			}
 			
 		}
-		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Input Invalid";
 			$m_data['content'] = "";
