@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2010 at 08:39 PM
+-- Generation Time: Dec 03, 2010 at 09:47 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `member` (
 --
 
 INSERT INTO `member` (`idmember`, `namamember`, `jeniskelamin`, `telepon`, `alamat`, `tempatlahir`, `tgllahir`, `statusmember`) VALUES
-(1, 'yulianti', 2, '08192777777', 'Depok', 'Palembang', '1989-01-20', 0),
+(1, 'yulianti', 2, '08192777777', 'Depok', 'Palembang', '0000-00-00', 0),
 (2, 'Ade Saputra', 1, '0819747437327', 'Depok', 'Jambi', '1989-04-01', 0),
 (3, 'Luki', 1, '090909090909', 'Jakarta', 'Jakarta', '1989-01-13', 0),
 (4, 'alfian', 1, '0891234566', 'Depok', 'Bandung', '1989-06-02', 0),
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
   `idtransaksi` int(10) NOT NULL AUTO_INCREMENT,
   `idmember` int(10) DEFAULT NULL,
   `idbuku` int(10) DEFAULT NULL,
-  `tipepinjam` int(11) DEFAULT NULL,
+  `tipepinjam` tinyint(1) DEFAULT '1',
   `tglpinjam` date DEFAULT NULL,
   `tglkembali` date DEFAULT NULL,
   `harga` int(11) DEFAULT '0',
@@ -158,7 +158,7 @@ INSERT INTO `user` (`user_id`, `nama`, `username`, `password`, `nohp`, `alamat`,
 (4, 'Pengelola', 'pengelola', 'c04b214bd23a91c98288045a99f753e25b70d691', '08190000003', 'Jln. Perumahan Pengelola', 'herbal', 0),
 (28, 'Ade Saputra', 'ade', '6fb0394b969258c4f33b92bbe8c601462bb5455b', '081807418051', 'Griya Indah', 'herbal', 0),
 (29, 'Yulianti', 'yuli', 'fc3042dcd8e80ae51d901051cbfd784883eeb013', '081927651112', 'Enelis', 'herbal', 0),
-(30, 'Percobaan saja', 'coba', '6228fcd5b58de800fd5798dd4cc5b6ccb233220b', '08190000004', 'Jln Coba Coba', 'herbal', 1);
+(30, 'Percobaan saja', 'coba', '6228fcd5b58de800fd5798dd4cc5b6ccb233220b', '08190000004', 'Jln Coba Coba', 'herbal', 0);
 
 -- --------------------------------------------------------
 
@@ -202,8 +202,8 @@ ALTER TABLE `role`
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `FK_transaksi1` FOREIGN KEY (`idmember`) REFERENCES `member` (`idmember`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_transaksi` FOREIGN KEY (`idbuku`) REFERENCES `buku` (`idbuku`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_transaksi` FOREIGN KEY (`idbuku`) REFERENCES `buku` (`idbuku`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_transaksi1` FOREIGN KEY (`idmember`) REFERENCES `member` (`idmember`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
