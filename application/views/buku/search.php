@@ -93,7 +93,7 @@ foreach ($content as $book):
 	else{
 		$book['status'] = "kosong";
 	}
-	$this->table->add_row($book['idbuku'],$book['namabuku'],$book['pengarang'],$book['status'],$book['hargasewa'],$book['lama'],$book['tglkembali']);
+	$this->table->add_row($book['idbuku'],$book['namabuku'],$book['pengarang'],$book['hargasewa'],$book['status'],$book['lama'],$book['tglkembali']);
 endforeach;
 
 echo $this->table->generate();
