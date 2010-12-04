@@ -80,8 +80,12 @@ if ($content!=""){
 		$this->table->add_row($buku['idbuku'],$buku['namabuku'],$buku['pengarang'],$buku['hargasewa'],mdate($datestring,$now), mdate($datestring,$ret));
 	endforeach;
 	echo $this->table->generate();
+?>
+
+Total = <?php echo $totalsewa;
 }
 ?>
+
 
 
 
@@ -104,7 +108,7 @@ if ($content!=""){
 echo form_open('peminjaman/pinjam_controller/transaksiSimpan',$attributes,$hidden);
 ?>
 
-Total = <?php echo $totalsewa;?>
+
 <br/>
 
 <table id="form2">
