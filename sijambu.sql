@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2010 at 02:26 PM
+-- Generation Time: Dec 04, 2010 at 11:40 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
   `tglkembali` date DEFAULT NULL,
   `harga` int(11) DEFAULT '0',
   `denda` int(11) DEFAULT '0',
+  `islunas` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idtransaksi`),
   KEY `idmember` (`idmember`),
   KEY `idbuku` (`idbuku`)
