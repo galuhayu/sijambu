@@ -49,7 +49,7 @@ echo "Welcome, ".$this->session->userdata('username');
 	
 	<?php if(element('PENGEMBALIAN',$this->session->userdata('user_access'))) {
 	if( $this->session->userdata('current_menu') == 'PENGEMBALIAN' ) $type = 'current_menu'; else $type = 'active_menu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/pengembalian/main_controller"> PENGEMBALIAN</a></div>            
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/pengembalian/home_controller"> PENGEMBALIAN</a></div>            
 	<?php }else {?>  
 	<div class="inactive_menu">PENGEMBALIAN</div>
 	<?php }?>
