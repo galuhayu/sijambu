@@ -66,7 +66,7 @@ class Pinjam_controller extends Controller {
 		$this->form_validation->set_rules('idbuku','Id Buku','required');
 		$idmember = $this->input->get_post('idmember');
 		$tipe = $this->input->get_post('tipe');
-		$tipe = $this->input->get_post('tipe');
+		
 		$num = $this->input->get_post('num');
 		
 		$prevcontent = $this->input->get_post('data');
@@ -131,9 +131,35 @@ class Pinjam_controller extends Controller {
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
 		$m_data['content'] = "";
-		
+		$idmember = $this->input->get_post('idmember');
+		$tipe = $this->input->get_post('tipe');
+		$num = $this->input->get_post('num');
 		$content = $this->input->get_post('data');
-		//$temp = $this->peminjaman_model->saveTransaction();
+		$temp = "";
+		if ($content >0){
+			for ($c = 0 ; $c < $num * 5 ; ){
+				$idbuku = $content[$c]['idbuku'];
+				$c++;
+				$namabuku = $content[$c]['namabuku'];
+				$c++;
+				$pengarang = $content[$c]['pengarang'];
+				$c++;
+				$hargasewa = $content[$c]['hargasewa'];
+				$c++;
+				$lama = $content[$c]['lama'];
+				$c++;
+				
+				
+				date_default_timezone_set("UTC");
+				$datestring = "%Y-%m-%d";
+				$now = time();
+				$ret=$now+(24*60*60*$lama);
+				$temp = $this->peminjaman_model->save_line_transaction($idmember,$idbuku,$tipe,mdate($datestring,$now),mdate($datestring,$ret),$hargasewa);
+		
+			}
+			
+		}
+
 		
 		$temp = count($content)/5;
 		
@@ -141,7 +167,7 @@ class Pinjam_controller extends Controller {
 				$m_data['notification_message']="You must enter your id book, please try again";
 			}
 			else{
-				$m_data['notification_message'] = "Transaction saved with id transaction = ";
+				$m_data['notification_message'] = "Transaction successfully saved";
 			}
 		
 		
