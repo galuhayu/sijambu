@@ -46,7 +46,7 @@ if ($content!=""){
 	$hidden = array('data' => $content, 'idmember' => $idmember , 'num' => count($content) );
 	echo form_open('pengembalian/kembali_controller/transaksiHitung',$attributes,$hidden);
 	
-	$this->table->set_heading('Id Buku','Judul Buku','Pengarang','Harga','Tanggal Pinjam', 'Tanggal Kembali' , 'Kembalikan?');
+	$this->table->set_heading('Id Buku','Judul Buku','Pengarang','Harga','Tanggal Pinjam', 'Tanggal Kembali' , 'Kembalikan?', 'Denda');
 	date_default_timezone_set("UTC");
 	$datestring = "%Y-%m-%d";
 	$now = time();
@@ -59,7 +59,7 @@ if ($content!=""){
 		    'value'=> $id,
 		    'checked'=> $buku['status'],
 		);
-		$this->table->add_row($buku['idbuku'],$buku['namabuku'],$buku['pengarang'],$buku['hargasewa'],$buku['tglpinjam'], mdate($datestring,$now), form_checkbox($field1));
+		$this->table->add_row($buku['idbuku'],$buku['namabuku'],$buku['pengarang'],$buku['hargasewa'],$buku['tglpinjam'], mdate($datestring,$now), form_checkbox($field1), $buku['denda']);
 	endforeach;
 	echo $this->table->generate();
 	
@@ -81,7 +81,7 @@ Total Denda = <?php echo $totaldenda;
 
 	$attributes = array('id' => 'save_form');
 	
-	$hidden = array('data' => $content, 'idmember' => $idmember ,'num' => count($content) , 'select' => $select);
+	$hidden = array('data' => $content, 'idmember' => $idmember ,'num' => count($content) , 'select' => $select );
 	
 echo form_open('pengembalian/kembali_controller/transaksiSimpan',$attributes,$hidden);
 ?>

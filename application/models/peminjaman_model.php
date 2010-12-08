@@ -23,6 +23,8 @@ class Peminjaman_model extends Model
 	function save_line_transaction($idmember,$idbuku,$tipe,$tglpinjam,$tglkembali,$harga){
 		$data=$this->db->query("INSERT INTO transaksi (idmember,idbuku,tipepinjam,tglpinjam,tglkembali,harga)VALUES ($idmember,$idbuku,$tipe,'$tglpinjam','$tglkembali',$harga)");
 		$data = $this->db->query("UPDATE buku SET status = 0 WHERE idbuku = $idbuku");
+		$data = $this->db->query("UPDATE buku SET jumpinjam = jumpinjam + 1 WHERE idbuku = $idbuku");
+		$data = $this->db->query("UPDATE member SET jumpinjam = jumpinjam + 1 WHERE idmember = $idmember");
 	}
 	
 }
