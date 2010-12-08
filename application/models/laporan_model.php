@@ -28,7 +28,7 @@ class Laporan_model extends Model
 	}
 	
 	function search_by_bulan($month){
-		$query = $this->db->query("SELECT member.namamember, buku.namabuku, transaksi.harga, transaksi.denda FROM transaksi,buku,member WHERE islunas = 1 AND transaksi.tglkembali LIKE '%-$month-%' AND member.idmember= transaksi.idmember AND buku.idbuku = transaksi.idbuku");
+		$query = $this->db->query("SELECT member.namamember, buku.namabuku, transaksi.harga, transaksi.denda FROM transaksi,buku,member WHERE transaksi.tglpinjam LIKE '%-$month-%' AND member.idmember= transaksi.idmember AND buku.idbuku = transaksi.idbuku");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -36,7 +36,7 @@ class Laporan_model extends Model
 	}
 	
 	function search_by_hari($start,$end){
-		$query = $this->db->query("SELECT member.namamember, buku.namabuku, transaksi.harga, transaksi.denda FROM transaksi,buku,member WHERE islunas = 1 AND transaksi.tglkembali >= '$start' AND transaksi.tglkembali <='$end' AND member.idmember= transaksi.idmember AND buku.idbuku = transaksi.idbuku");
+		$query = $this->db->query("SELECT member.namamember, buku.namabuku, transaksi.harga, transaksi.denda FROM transaksi,buku,member WHERE transaksi.tglpinjam>= '$start' AND transaksi.tglpinjam <='$end' AND member.idmember= transaksi.idmember AND buku.idbuku = transaksi.idbuku");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
