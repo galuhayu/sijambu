@@ -32,7 +32,6 @@ class Hari_controller extends Controller {
 			$m_data['notification_message']="Enter Field To Search";
 		}
 		else{
-			echo"wajaja";
 			$start=$this->input->get_post('field1');
 			$end=$this->input->get_post('field2');
 			$data = $this->laporan_model->search_by_hari($start,$end);
