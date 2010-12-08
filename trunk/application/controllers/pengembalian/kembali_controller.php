@@ -49,6 +49,7 @@ class Kembali_controller extends Controller {
 					$id = 0;
 					foreach ($data as $buku):
 						$temp[$id] = $buku;
+						$temp[$id]['denda'] = 0;
 						$id++;
 					endforeach;
 					$m_data['content'] = $temp;
@@ -76,8 +77,9 @@ class Kembali_controller extends Controller {
 		$id = 0;
 		$totaldenda = 0;
 		$temp = "";
+		$select = "";
 		if ($content >0){
-			for ($c = 0 ; $c < $num * 7 ; ){
+			for ($c = 0 ; $c < $num * 8 ; ){
 				$idbuku = $content[$c]['idbuku'];
 				$c++;
 				$namabuku = $content[$c]['namabuku'];
@@ -91,14 +93,24 @@ class Kembali_controller extends Controller {
 				$lama = $content[$c]['lama'];
 				$c++;
 				$c++; // this add for status
+				$c++; // this add for denda
 				$id++;
 				$check = $this->input->get_post('status'.$id);
 				$select[$id] = $check;
+				$denda = 0;
 				if ($check == TRUE){
-					$hargadenda = 0.5 * $hargasewa;
-					$totaldenda += $hargadenda;
+					date_default_timezone_set("UTC");
+					$now = time();
+					$q = strtotime($tglpinjam);
+					
+					$telat = floor (($now - $q) / (24 * 60 * 60)) - $lama;
+					if ($telat > 0 ){
+						$denda = (0.2 * $hargasewa) * $telat;
+					}
+					
+					$totaldenda += $denda;
 				}
-				$temp[$id-1] = array ('idbuku' => $idbuku, 'namabuku'=> $namabuku, 'pengarang' => $pengarang, 'hargasewa' => $hargasewa, 'tglpinjam' => $tglpinjam ,'lama' => $lama ,'status'=>$check);
+				$temp[$id-1] = array ('idbuku' => $idbuku, 'namabuku'=> $namabuku, 'pengarang' => $pengarang, 'hargasewa' => $hargasewa, 'tglpinjam' => $tglpinjam ,'lama' => $lama ,'status'=>$check, 'denda' => $denda);
 			}
 			
 		}
@@ -120,41 +132,48 @@ class Kembali_controller extends Controller {
 		$f_data['author']="ade";
 		$m_data['content'] = "";
 		
-		$temp = "";
-		$id=0;
-		$idmember = $this->input->get_post('idmember');
-		$num = $this->input->get_post('num');
-		$content = $this->input->get_post('data');
-		$select = $this->input->get_post('select');
-	
-		for ($c = 0 ; $c < $num * 7 ; ){
-			$idbuku = $content[$c]['idbuku'];
-			$c++;
-			$namabuku = $content[$c]['namabuku'];
-			$c++;
-			$pengarang = $content[$c]['pengarang'];
-			$c++;
-			$hargasewa = $content[$c]['hargasewa'];
-			$c++;
-			$tglpinjam = $content[$c]['tglpinjam'];
-			$c++;
-			$lama = $content[$c]['lama'];
-			$c++;
-			$c++; // this add for status
-			
-			$check = $select[$id];
-			if ($check == TRUE){
-				$denda = 200000000;// denda belum neh
-				date_default_timezone_set("UTC");
-				$datestring = "%Y-%m-%d";
-				$now = time();
-				
-				$temp = $this->pengembalian_model->save_line_transaction($idmember,$idbuku,$denda,mdate($datestring,$now));
-			}
-			$id++;
-		}
 		
-		$m_data['notification_message'] = "Transaction successfully saved";
+			$temp = "";
+			$id=0;
+			$idmember = $this->input->get_post('idmember');
+			$num = $this->input->get_post('num');
+			$content = $this->input->get_post('data');
+			$select = $this->input->get_post('select');
+		if ($select != "") {
+			for ($c = 0 ; $c < $num * 8 ; ){
+				$idbuku = $content[$c]['idbuku'];
+				$c++;
+				$namabuku = $content[$c]['namabuku'];
+				$c++;
+				$pengarang = $content[$c]['pengarang'];
+				$c++;
+				$hargasewa = $content[$c]['hargasewa'];
+				$c++;
+				$tglpinjam = $content[$c]['tglpinjam'];
+				$c++;
+				$lama = $content[$c]['lama'];
+				$c++;
+				$c++; // this add for status
+				$denda = $content[$c]['denda'];
+				$c++; // this add for denda
+				
+				$check = $select[$id];
+				if ($check == TRUE){
+					$denda = $denda;
+					date_default_timezone_set("UTC");
+					$datestring = "%Y-%m-%d";
+					$now = time();
+					
+					$temp = $this->pengembalian_model->save_line_transaction($idmember,$idbuku,$denda,mdate($datestring,$now));
+				}
+				$id++;
+			}
+			
+			$m_data['notification_message'] = "Transaction successfully saved";
+		}
+		else{
+			$m_data['notification_message'] = "Transaction failed, press Hitung Denda then Simpan";
+		}
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('pengembalian/home.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
