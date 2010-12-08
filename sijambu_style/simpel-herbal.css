@@ -115,7 +115,7 @@ BODY
 {
 	color: #000EAF;
 	background-color: #C6C8E9;
-	border: 2px solid;
+	border: 2px solid #000000;
 }
 .tablerow_even
 {
@@ -140,4 +140,8 @@ BODY
 #table
 {
 	margin: 10px 0px;
+}
+#welcome
+{
+	text-align: right;
 }
