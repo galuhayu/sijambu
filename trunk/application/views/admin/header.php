@@ -5,14 +5,15 @@
 </head>
 
 <body>
-
+<div id="welcome">
 <?php 
 if( $this->session->userdata('logged_in') == TRUE ) {
 echo "Welcome, ".$this->session->userdata('username');
 ?>
+<a href="<?=base_url()?>index.php/password_controller"> Ganti Password </a> 
 <a href="<?=base_url()?>index.php/logout_controller"> Logout </a> 
 <?php }?>
-
+</div>
 <!-- MENU -->
 <?php if( $this->session->userdata('logged_in') == TRUE ) { ?>
 
@@ -56,7 +57,7 @@ echo "Welcome, ".$this->session->userdata('username');
 	
 	<?php if(element('LAPORAN',$this->session->userdata('user_access'))) {
 	if( $this->session->userdata('current_menu') == 'LAPORAN' ) $type = 'current_menu'; else $type = 'active_menu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/laporan/main_controller"> LAPORAN</a></div>            
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/laporan/home_controller"> LAPORAN</a></div>            
 	<?php }else {?>  
 	<div class="inactive_menu">LAPORAN</div>
 	<?php }?>

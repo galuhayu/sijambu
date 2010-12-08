@@ -83,9 +83,9 @@ class User_model extends Model
 	 * update password
 	 *
 	 */
-	function change_pswd( $newpswd, $user_id ) {
-    
-        $sql = "UPDATE user SET password='".SHA1($newpswd)."' WHERE user_id='".$user_id."'";
-		$query = $this->db->query($sql);
-	}
+	function changepassword( $username, $passlama, $passbaru ) {
+		$passlama = SHA1($passlama);
+		$passbaru = SHA1($passbaru);
+		$query = $this->db->query("UPDATE user SET password='$passbaru' WHERE username = '$username' AND password = '$passlama'");
+        }
 }
