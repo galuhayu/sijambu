@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 04, 2010 at 11:40 PM
+-- Generation Time: Dec 06, 2010 at 07:40 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `tempatlahir` varchar(20) COLLATE latin1_general_ci DEFAULT NULL,
   `tgllahir` date DEFAULT NULL,
   `statusmember` tinyint(1) NOT NULL,
+  `jumpinjam` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idmember`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=7 ;
 
@@ -75,13 +76,13 @@ CREATE TABLE IF NOT EXISTS `member` (
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`idmember`, `namamember`, `jeniskelamin`, `telepon`, `alamat`, `tempatlahir`, `tgllahir`, `statusmember`) VALUES
-(1, 'yulianti', 2, '08192777777', 'Depok', 'Palembang', '0000-00-00', 0),
-(2, 'Ade Saputra', 1, '0819747437327', 'Depok', 'Jambi', '1989-04-01', 0),
-(3, 'Luki', 1, '090909090909', 'Jakarta', 'Jakarta', '1989-01-13', 0),
-(4, 'alfian', 1, '0891234566', 'Depok', 'Bandung', '1989-06-02', 0),
-(5, 'Rinaldi', 1, '0718274656', 'Jakarta', 'Jakarta', '1989-07-14', 0),
-(6, 'Risda', 2, '09586778574', 'Depok', 'palembang', '1989-12-13', 0);
+INSERT INTO `member` (`idmember`, `namamember`, `jeniskelamin`, `telepon`, `alamat`, `tempatlahir`, `tgllahir`, `statusmember`, `jumpinjam`) VALUES
+(1, 'yulianti', 2, '08192777777', 'Depok', 'Palembang', '0000-00-00', 0, 0),
+(2, 'Ade Saputra', 1, '0819747437327', 'Depok', 'Jambi', '1989-04-01', 0, 0),
+(3, 'Luki', 1, '090909090909', 'Jakarta', 'Jakarta', '1989-01-13', 0, 0),
+(4, 'alfian', 1, '0891234566', 'Depok', 'Bandung', '1989-06-02', 0, 0),
+(5, 'Rinaldi', 1, '0718274656', 'Jakarta', 'Jakarta', '1989-07-14', 0, 0),
+(6, 'Risda', 2, '09586778574', 'Depok', 'palembang', '1989-12-13', 0, 0);
 
 -- --------------------------------------------------------
 
