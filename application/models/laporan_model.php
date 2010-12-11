@@ -20,7 +20,7 @@ class Laporan_model extends Model
 		return 0;
 	}
 	function list_pinjam(){
-		$query = $this->db->query("SELECT member.namamember, buku.namabuku, transaksi.tglpinjam, transaksi.tglkembali, buku.hargasewa, buku.lama FROM transaksi,member,buku WHERE transaksi.idmember=member.idmember AND transaksi.idbuku=buku.idbuku AND islunas = 0 ORDER BY transaksi.tglpinjam ASC");
+		$query = $this->db->query("SELECT member.namamember, buku.namabuku, transaksi.tglpinjam, transaksi.tglkembali, buku.hargasewa, buku.lama, member.telepon FROM transaksi,member,buku WHERE transaksi.idmember=member.idmember AND transaksi.idbuku=buku.idbuku AND islunas = 0 ORDER BY transaksi.tglpinjam ASC");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
