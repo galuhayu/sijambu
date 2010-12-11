@@ -31,7 +31,7 @@ class Kembali_controller extends Controller {
 		$this->form_validation->set_rules('idmember','Id Member','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 			
 			$this->load->view('pengembalian/home.php',$m_data);
 		}
@@ -39,7 +39,7 @@ class Kembali_controller extends Controller {
 			$idmember = $this->input->get_post('idmember');
 			$temp = $this->pengembalian_model->validate_id($idmember);
 			if ($temp == 0){
-				$m_data['notification_message']="Member not found";
+				$m_data['notification_message']="Member tidak ditemukan";
 				$this->load->view('pengembalian/home.php',$m_data);
 			}
 			else{
@@ -60,7 +60,7 @@ class Kembali_controller extends Controller {
 					$this->load->view('pengembalian/transaksi.php',$m_data);
 				}
 				else{
-					$m_data['notification_message']="Member don't have any book borrowed";
+					$m_data['notification_message']="Member tidak memiliki pinjaman buku yang belum dikembalikan";
 					$this->load->view('pengembalian/home.php',$m_data);
 				}
 			}
@@ -105,7 +105,7 @@ class Kembali_controller extends Controller {
 					
 					$telat = floor (($now - $q) / (24 * 60 * 60)) - $lama;
 					if ($telat > 0 ){
-						$denda = (0.2 * $hargasewa) * $telat;
+						$denda = (0.1 * $hargasewa) * $telat;
 					}
 					
 					$totaldenda += $denda;
@@ -118,7 +118,7 @@ class Kembali_controller extends Controller {
 		$m_data['content'] = $temp;
 		$m_data['idmember'] = $idmember;
 		$m_data['totaldenda'] = $totaldenda;
-		$m_data['notification_message'] = "Denda Calculated for selected field";
+		$m_data['notification_message'] = "Denda untuk field yang dipilih telah dihitung";
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
 		$this->load->view('admin/header.php',$h_data);
@@ -169,10 +169,10 @@ class Kembali_controller extends Controller {
 				$id++;
 			}
 			
-			$m_data['notification_message'] = "Transaction successfully saved";
+			$m_data['notification_message'] = "Transaksi berhasil disimpan";
 		}
 		else{
-			$m_data['notification_message'] = "Transaction failed, press Hitung Denda then Simpan";
+			$m_data['notification_message'] = "Transaksi gagal, tekan hitung denda baru disimpan";
 		}
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('pengembalian/home.php',$m_data);

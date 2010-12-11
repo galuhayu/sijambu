@@ -31,7 +31,7 @@ class Pinjam_controller extends Controller {
 		$this->form_validation->set_rules('idmember','Id Member','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 			
 			$this->load->view('peminjaman/home.php',$m_data);
 		}
@@ -46,7 +46,7 @@ class Pinjam_controller extends Controller {
 			}
 			$temp = $this->peminjaman_model->validate_id($idmember);
 			if ($temp == 0){
-				$m_data['notification_message']="Member not found";
+				$m_data['notification_message']="Member tidak ditemukan";
 				$this->load->view('peminjaman/home.php',$m_data);
 			}
 			else{
@@ -110,9 +110,9 @@ class Pinjam_controller extends Controller {
 					$temp[$id] = $buku;
 					$id++;
 				endforeach;
-				$m_data['notification_message']="Book added";
+				$m_data['notification_message']="Buku berhasil ditambah";
 			}else{
-				$m_data['notification_message'] = "Book Not Found";
+				$m_data['notification_message'] = "Buku tidak ditemukan";
 				$m_data['content'] = "";
 			}
 		}			
