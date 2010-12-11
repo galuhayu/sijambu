@@ -16,7 +16,7 @@ class Password_controller extends Controller
 			$this->session->set_userdata('current_menu','');
 			$h_data['style']="simpel-herbal.css";
 			$m_data['notification_message'] = "";//$notification_message;
-			$f_data['author']="ade";
+			$f_data['author']="fasilkom 07";
 			$this->load->view('admin/header.php',$h_data);
 			$this->load->view('home_password',$m_data);
 			$this->load->view('admin/footer.php',$f_data);

@@ -15,7 +15,7 @@ class Hari_controller extends Controller {
 		$h_data['style']="simpel-herbal.css";
 		$m_data['notification_message']="";
 		$m_data['content']="";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('laporan/hari.php',$m_data);
@@ -51,7 +51,7 @@ class Hari_controller extends Controller {
 		}
 		
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('laporan/hari.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);

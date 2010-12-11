@@ -15,7 +15,7 @@ class Pinjam_controller extends Controller {
 		$h_data['style']="simpel-herbal.css";
 		$m_data['content'] = "";
 		$m_data['notification_message'] = "";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('peminjaman/home.php',$m_data);
@@ -24,7 +24,7 @@ class Pinjam_controller extends Controller {
 	
 	function transaksi(){
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$m_data['content'] = "";
 		$this->load->view('admin/header.php',$h_data);
 		
@@ -121,7 +121,7 @@ class Pinjam_controller extends Controller {
 		$m_data['idmember'] = $idmember;
 		$m_data['totalsewa'] = $totalsewa;
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('peminjaman/transaksi.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
@@ -129,7 +129,7 @@ class Pinjam_controller extends Controller {
 	
 	function transaksiSimpan(){
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$m_data['content'] = "";
 		$idmember = $this->input->get_post('idmember');
 		$tipe = $this->input->get_post('tipe');

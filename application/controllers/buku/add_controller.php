@@ -14,7 +14,7 @@ class Add_controller extends Controller {
 		$this->session->set_userdata('current_menu','BUKU');
 		$h_data['style']="simpel-herbal.css";
 		$m_data['notification_message']="";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('buku/add.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
@@ -39,7 +39,7 @@ class Add_controller extends Controller {
 			$m_data['notification_message']="Buku berhasil dibuat dengan id = ".$id;
 		}			
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('buku/add.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
