@@ -34,7 +34,7 @@ class Pinjam_controller extends Controller {
 			$m_data['content'] = $temp;
 		}
 		else{
-			$m_data['notification_message']="Pinjaman Not Found";
+			$m_data['notification_message']="Pinjaman tidak ditemukan";
 		}
 		
 		$this->load->view('admin/header.php',$h_data);

@@ -29,7 +29,7 @@ class Hari_controller extends Controller {
 		$this->form_validation->set_rules('field1','Field1','required');
 		$this->form_validation->set_rules('field2','Field2','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter Field To Search";
+			$m_data['notification_message']="Masukan Field untuk mencari ";
 		}
 		else{
 			$start=$this->input->get_post('field1');
@@ -46,7 +46,7 @@ class Hari_controller extends Controller {
 				$m_data['total'] = $total;
 			}
 			else{
-				$m_data['notification_message']="Transaction Not Found in Selection Date";
+				$m_data['notification_message']="Transaksi tidak ditemukan dalam interval waktu tersebut";
 			}
 		}
 		

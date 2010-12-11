@@ -27,7 +27,7 @@ class Buku_controller extends Controller {
 			$m_data['content'] = $temp;
 		}
 		else{
-			$m_data['notification_message']="Book Not Found";
+			$m_data['notification_message']="Buku tidak ditemukan";
 		}
 		
 		$this->load->view('admin/header.php',$h_data);

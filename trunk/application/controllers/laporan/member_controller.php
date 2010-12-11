@@ -27,7 +27,7 @@ class Member_controller extends Controller {
 			$m_data['content'] = $temp;
 		}
 		else{
-			$m_data['notification_message']="Member Not Found";
+			$m_data['notification_message']="Member tidak ditemukan";
 		}
 		
 		$this->load->view('admin/header.php',$h_data);
