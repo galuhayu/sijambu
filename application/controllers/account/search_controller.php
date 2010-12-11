@@ -27,7 +27,7 @@ class Search_controller extends Controller {
 		
 		$this->form_validation->set_rules('username','Username','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter Username To Search";
+			$m_data['notification_message']="Masukkan Username untuk mencari";
 		}
 		else{
 			$username=$this->input->get_post('username');
@@ -42,7 +42,7 @@ class Search_controller extends Controller {
 				$m_data['content'] = $temp;
 			}
 			else{
-				$m_data['notification_message']="User Not Found";
+				$m_data['notification_message']="Account tidak ditemukan";
 			}
 		}
 		$h_data['style']="simpel-herbal.css";

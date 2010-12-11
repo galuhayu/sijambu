@@ -27,7 +27,7 @@ class Home_controller extends Controller {
 			$m_data['content'] = $temp;
 		}
 		else{
-			$m_data['notification_message']="User Not Found";
+			$m_data['notification_message']="Account Tidak ditemukan";
 		}
 		
 		$this->load->view('admin/header.php',$h_data);

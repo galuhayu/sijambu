@@ -25,16 +25,16 @@ class Delete_controller extends Controller {
 		$this->form_validation->set_rules('username','Username','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 		}
 		else{
 			$username=$this->input->get_post('username');
 			$status = $this->account_model->delete_account($username);
 			if ($status != 0 ){
-				$m_data['notification_message']="Account successfully deleted";
+				$m_data['notification_message']="Account berhasil dihapus";
 			}
 			else{
-				$m_data['notification_message']="User Not Found";
+				$m_data['notification_message']="Account tidak ditemukan";
 			}
 		}			
 		$h_data['style']="simpel-herbal.css";

@@ -31,7 +31,7 @@ class Update_controller extends Controller {
 			$alamat = $this->input->get_post('address');
 			$telp= $this->input->get_post('telp');
 			$this->account_model->update_account($username,$role_name, $nama, $alamat, $telp);
-			$m_data['notification_message']="Account successfully updated";
+			$m_data['notification_message']="Account berhasil diubah";
 				
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
@@ -48,7 +48,7 @@ class Update_controller extends Controller {
 		
 		$this->form_validation->set_rules('username','Username','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter Username To Search";
+			$m_data['notification_message']="Masukan username untuk mencari";
 		}
 		else{
 			$username=$this->input->get_post('username');
@@ -59,7 +59,7 @@ class Update_controller extends Controller {
 				endforeach;
 			}
 			else{
-				$m_data['notification_message']="User Not Found";
+				$m_data['notification_message']="Account tidak ditemukan";
 			}
 		}
 		$h_data['style']="simpel-herbal.css";
