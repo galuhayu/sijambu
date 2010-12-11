@@ -70,7 +70,7 @@ class Login_controller extends Controller {
 		}
 		$h_data['style']="simpel-herbal.css";
 		$m_data['notification_message'] = "Username / Password Account tidak benar ";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('home_view',$m_data);
 		$this->load->view('admin/footer.php',$f_data);					

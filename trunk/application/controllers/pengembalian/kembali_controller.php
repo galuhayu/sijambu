@@ -15,7 +15,7 @@ class Kembali_controller extends Controller {
 		$h_data['style']="simpel-herbal.css";
 		$m_data['content'] = "";
 		$m_data['notification_message'] = "";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('pengembalian/home.php',$m_data);
@@ -24,7 +24,7 @@ class Kembali_controller extends Controller {
 	
 	function transaksi(){
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$m_data['content'] = "";
 		$this->load->view('admin/header.php',$h_data);
 		
@@ -120,7 +120,7 @@ class Kembali_controller extends Controller {
 		$m_data['totaldenda'] = $totaldenda;
 		$m_data['notification_message'] = "Denda untuk field yang dipilih telah dihitung";
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('pengembalian/transaksi.php',$m_data);
 		$this->load->view('admin/footer.php',$f_data);
@@ -129,7 +129,7 @@ class Kembali_controller extends Controller {
 	
 	function transaksiSimpan(){
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$m_data['content'] = "";
 		
 		

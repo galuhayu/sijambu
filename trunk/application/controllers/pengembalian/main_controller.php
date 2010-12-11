@@ -12,7 +12,7 @@ class Main_controller extends Controller {
 		$this->session->set_userdata('current_menu','PENGEMBALIAN');
 	
 		$h_data['style']="simpel-herbal.css";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		$this->load->view('admin/header.php',$h_data);
 		$this->load->view('home_view');
 		$this->load->view('admin/footer.php',$f_data);

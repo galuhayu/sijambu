@@ -15,7 +15,7 @@ class Home_controller extends Controller {
 		$h_data['style']="simpel-herbal.css";
 		$m_data['notification_message']="";
 		$m_data['content']="";
-		$f_data['author']="ade";
+		$f_data['author']="fasilkom 07";
 		
 		$data = $this->book_model->list_buku();
 		$id=0;
