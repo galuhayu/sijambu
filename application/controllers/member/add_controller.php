@@ -44,7 +44,7 @@ class Add_controller extends Controller {
 			
 			$temp = $this->member_model->create_member($namamember,$telepon,$alamat,$tempatlahir,$tgllahir,$jeniskelamin);
 			$id = $temp[0]['idmember'];
-			$m_data['notification_message']="Member successfully created with id = ".$id;
+			$m_data['notification_message']="Member berhasil dibuat dengan id = ".$id;
 		}			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";

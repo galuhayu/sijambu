@@ -39,7 +39,7 @@ class Update_controller extends Controller {
 			$tempatlahir=$this->input->get_post('tempatlahir');
 			$tgllahir=$this->input->get_post('tgllahir');
 			$this->member_model->update_member($idmember,$namamember,$jeniskelamin,$telepon, $alamat, $tempatlahir,$tgllahir);
-			$m_data['notification_message']="Member successfully updated";
+			$m_data['notification_message']="Member berhasil diubah";
 			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
@@ -56,7 +56,7 @@ class Update_controller extends Controller {
 		
 		$this->form_validation->set_rules('idmember','idmember','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter ID Member To Search";
+			$m_data['notification_message']="Masukan ID Member untuk mencari";
 		}
 		else{
 			
@@ -68,7 +68,7 @@ class Update_controller extends Controller {
 				endforeach;
 			}
 			else{
-				$m_data['notification_message']="Member Not Found";
+				$m_data['notification_message']="Member tidak ditemukan";
 			}
 		}
 		$h_data['style']="simpel-herbal.css";

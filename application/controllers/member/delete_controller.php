@@ -31,10 +31,10 @@ class Delete_controller extends Controller {
 			$idmember=$this->input->get_post('idmember');
 			$status = $this->member_model->delete_member($idmember);
 			if ($status != 0 ){
-				$m_data['notification_message']="Member successfully deleted";
+				$m_data['notification_message']="Member berhasil dihapus";
 			}
 			else{
-				$m_data['notification_message']="Member Not Found";
+				$m_data['notification_message']="Member tidak ditemukan";
 			}
 		}		
 		$h_data['style']="simpel-herbal.css";

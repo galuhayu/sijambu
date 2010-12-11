@@ -27,7 +27,7 @@ class Search_controller extends Controller {
 		
 		$this->form_validation->set_rules('field','Field','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter Field To Search";
+			$m_data['notification_message']="Masukan Field untuk mencari";
 		}
 		else{
 			$field=$this->input->get_post('field');
@@ -46,7 +46,7 @@ class Search_controller extends Controller {
 				$m_data['content'] = $temp;
 			}
 			else{
-				$m_data['notification_message']="Member Not Found";
+				$m_data['notification_message']="Member tidak ditemukan";
 			}
 		}
 		
