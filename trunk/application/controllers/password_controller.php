@@ -39,10 +39,10 @@ class Password_controller extends Controller
 			echo $username;
 			if ($passbaru == $passconf){
 				$temp = $this->user_model->changepassword($username, $passlama,$passbaru);
-				$m_data['notification_message']="Password successfully changed";
+				$m_data['notification_message']="Password telah berhasil diganti";
 
 			}else{
-				$m_data['notification_message']="Confirmation password mismatch";
+				$m_data['notification_message']="Konfirmasi password tidak cocok";
 			}
 		}			
 		$h_data['style']="simpel-herbal.css";
