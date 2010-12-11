@@ -28,7 +28,7 @@ class Bulan_controller extends Controller {
 		$total = 0;
 		$this->form_validation->set_rules('field','Field','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter Field To Search";
+			$m_data['notification_message']="Masukan Field untuk mencari";
 		}
 		else{
 			$field=$this->input->get_post('field');
@@ -45,7 +45,7 @@ class Bulan_controller extends Controller {
 				$m_data['total'] = $total;
 			}
 			else{
-				$m_data['notification_message']="Transaction Not Found in Month $field";
+				$m_data['notification_message']="Transaksi tidak ditemukan untuk bulan $field";
 			}
 		}
 		
