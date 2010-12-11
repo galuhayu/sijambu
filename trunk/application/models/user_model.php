@@ -86,6 +86,13 @@ class User_model extends Model
 	function changepassword( $username, $passlama, $passbaru ) {
 		$passlama = SHA1($passlama);
 		$passbaru = SHA1($passbaru);
-		$query = $this->db->query("UPDATE user SET password='$passbaru' WHERE username = '$username' AND password = '$passlama'");
+		$query = $this->db->query("SELECT user_id FROM user WHERE password='$passlama'");
+		if ($query->num_rows()!=0){
+			$query = $this->db->query("UPDATE user SET password='$passbaru' WHERE username = '$username' AND password = '$passlama'");
+			return 1;
+		}
+		else {
+			return 0;
+		}
         }
 }
