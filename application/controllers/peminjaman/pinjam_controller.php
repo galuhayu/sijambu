@@ -94,7 +94,7 @@ class Pinjam_controller extends Controller {
 			
 		}
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 			$m_data['content'] = "";
 		}
 		else{
@@ -164,10 +164,10 @@ class Pinjam_controller extends Controller {
 		$temp = count($content)/5;
 		
 			if ($temp < 1){
-				$m_data['notification_message']="You must enter your id book, please try again";
+				$m_data['notification_message']="Masukan id buku, silahkan coba lagi";
 			}
 			else{
-				$m_data['notification_message'] = "Transaction successfully saved";
+				$m_data['notification_message'] = "Transaksi berhasil disimpan";
 			}
 		
 		

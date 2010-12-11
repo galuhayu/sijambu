@@ -26,7 +26,7 @@ class Add_controller extends Controller {
 		$this->form_validation->set_rules('alamat','Alamat','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 		}
 		else{
 			$namamember = $this->input->get_post('namamember');
