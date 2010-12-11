@@ -25,16 +25,16 @@ class Delete_controller extends Controller {
 		$this->form_validation->set_rules('idbuku','Id Buku','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 		}
 		else{
 			$idbuku=$this->input->get_post('idbuku');
 			$status = $this->book_model->delete_buku($idbuku);
 			if ($status != 0 ){
-				$m_data['notification_message']="Book successfully deleted";
+				$m_data['notification_message']="Buku berhasil dihapus";
 			}
 			else{
-				$m_data['notification_message']="Book Not Found";
+				$m_data['notification_message']="Buku tidak ditemukan";
 			}
 		}		
 		$h_data['style']="simpel-herbal.css";

@@ -27,7 +27,7 @@ class Add_controller extends Controller {
 		$this->form_validation->set_rules('lama','Lama Sewa','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 		}
 		else{
 			$namabuku = $this->input->get_post('namabuku');
@@ -36,7 +36,7 @@ class Add_controller extends Controller {
 			$lama = $this->input->get_post('lama');
 			$temp = $this->book_model->create_buku($namabuku,$pengarang,$hargasewa,$lama);
 			$id = $temp[0]['idbuku'];
-			$m_data['notification_message']="Book successfully created with id = ".$id;
+			$m_data['notification_message']="Buku berhasil dibuat dengan id = ".$id;
 		}			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
