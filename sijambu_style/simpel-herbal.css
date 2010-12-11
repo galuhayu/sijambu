@@ -13,14 +13,15 @@
 }
 BODY
 {
-	background-color: #9EAEFE;
+	background-color: #F4E7C4;
 }
 #main
 {
 	background-color: #FFFFFF;
-	border-top: 3px solid #0E3FD3;
-	border-bottom: 3px solid #0E3FD3;
+	border-top: 3px solid #9B4738;
+	border-bottom: 3px solid #9B4738;
 	margin: 0 -8px;
+	text-align: left;
 }
 #menu
 {
@@ -28,10 +29,10 @@ BODY
 }
 .active_menu
 {
-	background-color: #ADB1E4;
-	border-top: 3px solid #2E47E8;
-	border-left: 3px solid #2E47E8;
-	border-right: 3px solid #2E47E8;
+	background-color: #EBD497;
+	border-top: 3px solid #9B4738;
+	border-left: 3px solid #9B4738;
+	border-right: 3px solid #9B4738;
 	padding: 2px 5px 3px 6px;
 	float: left;
 	margin: 0 5px 0px 0;
@@ -39,9 +40,9 @@ BODY
 .current_menu
 {
 	background-color: #FFFFFF;
-	border-top: 3px solid #2E47E8;
-	border-left: 3px solid #2E47E8;
-	border-right: 3px solid #2E47E8;
+	border-top: 3px solid #9B4738;
+	border-left: 3px solid #9B4738;
+	border-right: 3px solid #9B4738;
 	padding: 2px 5px 3px 6px;
 	float: left;
 	margin: 0 5px 0px 0;
@@ -50,9 +51,9 @@ BODY
 .inactive_menu
 {
 	background-color: #6B6767;
-	border-top: 3px solid #2E47E8;
-	border-left: 3px solid #2E47E8;
-	border-right: 3px solid #2E47E8;
+	border-top: 3px solid #9B4738;
+	border-left: 3px solid #9B4738;
+	border-right: 3px solid #9B4738;
 	padding: 2px 5px 3px 6px;
 	float: left;
 	margin: 0 5px 0px 0;
@@ -60,36 +61,37 @@ BODY
 }
 .active_menu A
 {
-	color: #2C25DC;
+	color: #9B4738;
 	text-decoration: none;
 }
 .active_menu A:hover
 {
-	background-color: #E8A0CD;
+	background-color: #D3ACA6;
 }
 .content
 {
-	border: 2px solid #095E98;
+	border: 2px solid #9B4738;
 	margin: 0 20px 30px;
 	padding: 10px 20px;
 }
 .modulheader
 {
 	margin: 29px 20px 0;
-	border: 2px solid #1505A5;
+	border: 2px solid #9B4738;
 	float: inherit;
 	padding: 2px 5px 3px;
-	background-color: #C9C4F9;
+	background-color: #CE978E;
 }
 .current_menu A
 {
 	text-decoration: none;
+	color: #CC3232;
 }
 .modulmenu
 {
 	float: left;
 	margin: 0 5px 0px 0;
-	color: #EF1919;
+	color: #D34343;
 }
 #modulmenu
 {
@@ -97,14 +99,15 @@ BODY
 }
 .modulmenu
 {
-	background-color: #A3BCF3;
-	border: 2px solid #2259D2;
+	background-color: #FAD7D2;
+	border: 2px solid #9B4738;
 	padding: 4px;
 }
 .modulmenu A
 {
 	text-decoration: none;
 	font-size: 7.6pt;
+	color: #E11414;
 }
 .notification
 {
@@ -113,29 +116,33 @@ BODY
 }
 .tablehead
 {
-	color: #000EAF;
-	background-color: #C6C8E9;
-	border: 2px solid;
+	color: #C33218;
+	background-color: #FAD266;
+	border: 2px solid #000000;
+	border-right: 2px solid #DC3131;
+	border-left: 2px solid #DC3131;
+	border-bottom: 2px solid #DC3131;
+	border-top: 2px solid #DC3131;
 }
 .tablerow_even
 {
-	background-color: #BAD4EB;
+	background-color: #F9F0D8;
 }
 .tablerow_even TD
 {
-	border-left: 2px solid #05119B;
-	border-right: 2px solid #05119B;
-	border-bottom: 2px solid #05119B;
+	border-left: 2px solid #DC3131;
+	border-right: 2px solid #DC3131;
+	border-bottom: 2px solid #DC3131;
 }
 .tablerow_odd
 {
-	background-color: #84B6FA;
+	background-color: #FDE39E;
 }
 .tablerow_odd TD
 {
-	border-right: 2px solid #0306CA;
-	border-left: 2px solid #0306CA;
-	border-bottom: 2px solid #0306CA;
+	border-right: 2px solid #DC3131;
+	border-left: 2px solid #DC3131;
+	border-bottom: 2px solid #DC3131;
 }
 #table
 {
@@ -143,5 +150,126 @@ BODY
 }
 #welcome
 {
-	text-align:right;	
+	text-align: right;
+	margin: -2px 0px 0;
+}
+#judul
+{
+	margin: -40px 0 0px 61px;
+	font: italic small-caps normal 22.4pt/23.4pt sans-serif;
+	color: #9B4738;
+}
+A
+{
+	text-decoration: none;
+	color: #AB0E0E;
+}
+#welcome A
+{
+	border-left: 2px solid #D56E6E;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#user
+{
+	color: #A74635;
+	font-size: 13.9pt;
+	/*[empty]font-style:;*/
+}
+.content H1
+{
+	margin: -131px 0 0 157px;
+}
+.content P
+{
+	margin: 111px 0 0 159px;
+}
+.calendar
+{
+	border: 1px solid #D93E25;
+	background-color: transparent;
+	margin: -90px 0 0 699px;
+}
+.calheading
+{
+	background-color: #EAD396;
+	color: #943;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+}
+.calnavleft
+{
+	background-color: #D3B052;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #E44;
+	padding: 4px;
+	cursor: pointer;
+}
+.calnavright
+{
+	background-color: #D3B052;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #D33;
+	text-align: right;
+	padding: 4px;
+	cursor: pointer;
+}
+.caldayheading
+{
+	background-color: #943;
+	color: #FEE;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 10px;
+	text-align: center;
+	padding: 6px 2px;
+}
+.caldaycells
+{
+	color: #000;
+	background-color: #CD968D;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 11px;
+	text-align: center;
+	padding: 4px;
+	border: 1px solid #E0E5F1;
+	cursor: pointer;
+}
+.caldaycellhover
+{
+	color: #FFF;
+	background-color: #E5C05D;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 11px;
+	text-align: center;
+	padding: 4px;
+	border: 1px solid #B3BCD4;
+	cursor: pointer;
+}
+.caldayselected
+{
+	background-color: #F6B917;
+	color: #FFF;
+	font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid #566188;
+	padding: 3px;
+	cursor: pointer;
+}
+.calblanktop
+{
+	background-color: #FDD;
+	padding: 4px;
+}
+.calblankbot
+{
+	background-color: #FDD;
+	padding: 4px;
 }
