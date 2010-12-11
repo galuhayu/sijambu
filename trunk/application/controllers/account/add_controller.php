@@ -25,7 +25,7 @@ class Add_controller extends Controller {
 		$this->form_validation->set_rules('password','Password','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 		}
 		else{
 			$username=$this->input->get_post('username');
@@ -35,7 +35,7 @@ class Add_controller extends Controller {
 			$nohp=$this->input->get_post('telp');
 			$alamat=$this->input->get_post('address');
 			$this->account_model->create_account($username,SHA1($password),$role_name,$nama,$alamat,$nohp);
-			$m_data['notification_message']="Account successfully created";
+			$m_data['notification_message']="Account berhasil dibuat";
 		}			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
