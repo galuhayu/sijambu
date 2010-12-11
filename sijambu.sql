@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2010 at 07:40 PM
+-- Generation Time: Dec 11, 2010 at 11:25 AM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `isDelete` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `user`
@@ -162,7 +162,8 @@ INSERT INTO `user` (`user_id`, `nama`, `username`, `password`, `nohp`, `alamat`,
 (4, 'Pengelola', 'pengelola', 'c04b214bd23a91c98288045a99f753e25b70d691', '08190000003', 'Jln. Perumahan Pengelola', 'herbal', 0),
 (28, 'Ade Saputra', 'ade', '6fb0394b969258c4f33b92bbe8c601462bb5455b', '081807418051', 'Griya Indah', 'herbal', 0),
 (29, 'Yulianti', 'yuli', 'fc3042dcd8e80ae51d901051cbfd784883eeb013', '081927651112', 'Enelis', 'herbal', 0),
-(30, 'Percobaan saja', 'coba', '6228fcd5b58de800fd5798dd4cc5b6ccb233220b', '08190000004', 'Jln Coba Coba', 'herbal', 0);
+(30, 'Percobaan saja', 'coba', '6228fcd5b58de800fd5798dd4cc5b6ccb233220b', '08190000004', 'Jln Coba Coba', 'herbal', 0),
+(31, '', 'new', 'c2a6b03f190dfb2b4aa91f8af8d477a9bc3401dc', NULL, NULL, 'herbal', 0);
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   PRIMARY KEY (`user_role_id`),
   KEY `role_id` (`role_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `user_role`
@@ -190,17 +191,12 @@ INSERT INTO `user_role` (`user_role_id`, `user_id`, `role_id`) VALUES
 (4, 4, 4),
 (14, 28, 4),
 (15, 29, 3),
-(16, 30, 2);
+(16, 30, 2),
+(17, 31, 2);
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `role`
---
-ALTER TABLE `role`
-  ADD CONSTRAINT `FK_role` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`role_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi`
@@ -210,10 +206,11 @@ ALTER TABLE `transaksi`
   ADD CONSTRAINT `FK_transaksi1` FOREIGN KEY (`idmember`) REFERENCES `member` (`idmember`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- Constraints for table `user_role`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_role` (`user_id`) ON UPDATE CASCADE;
+ALTER TABLE `user_role`
+  ADD CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
