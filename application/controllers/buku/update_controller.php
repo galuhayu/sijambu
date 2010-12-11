@@ -31,7 +31,7 @@ class Update_controller extends Controller {
 			$hargasewa=$this->input->get_post('hargasewa');
 			$lama=$this->input->get_post('lama');
 			$this->book_model->update_buku($idbuku,$namabuku,$pengarang,$hargasewa,$lama);
-			$m_data['notification_message']="Account successfully updated";
+			$m_data['notification_message']="Buku berhasil diubah";
 			
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="ade";
@@ -48,7 +48,7 @@ class Update_controller extends Controller {
 		
 		$this->form_validation->set_rules('idbuku','idbuku','required');
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Enter ID buku To Search";
+			$m_data['notification_message']="Masukan ID buku untuk mencari";
 		}
 		else{
 			
@@ -60,7 +60,7 @@ class Update_controller extends Controller {
 				endforeach;
 			}
 			else{
-				$m_data['notification_message']="Book Not Found";
+				$m_data['notification_message']="Buku tidak ditemukan";
 			}
 		}
 		$h_data['style']="simpel-herbal.css";
