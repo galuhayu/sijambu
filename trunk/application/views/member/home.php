@@ -5,13 +5,13 @@
 
 <div id="modulmenu">
 	<?php if( $this->session->userdata('current_modulmenu') == 'REGISTER' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/add_controller"> ADD</a></div> 
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/add_controller"> TAMBAH</a></div> 
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/search_controller"> SEARCH</a></div>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/search_controller"> CARI</a></div>
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/update_controller"> UPDATE</a></div>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/update_controller"> UBAH</a></div>
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/delete_controller"> DELETE</a></div>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/member/delete_controller"> HAPUS</a></div>
 </div>
 	
 <div class="modulheader">
