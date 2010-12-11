@@ -44,9 +44,11 @@ LOGIN
 </div>
 
 <div class='content'>
-	<p>aduh bingung buat dong css nya</p>
-	<p>content nya juga</p>
-	<p>semua juga belum</p>
+	<img src="<?=base_url()?>/sijambu_style/sijambu.png"  width="150" height="180"/>
+	<h1> Selamat datang di Sistem Peminjaman Buku (Sijambu)</h1>
+	<p>Sijambu adalah sistem yang dibangun untuk mengelola peminjaman buku</p>
+		<?php echo js_calendar_script('my_form');  ?>
+		<?php echo js_calendar_write('entry_date', time(), true);?>
 </div>
 
 
