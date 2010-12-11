@@ -51,9 +51,9 @@ if ($content!=""){
 	);
 	$this->table->set_template($tmpl);
 	
-	$this->table->set_heading('Nama Member' , 'Nama Buku', 'Tanggal Pinjam', 'Tanggal Kembali', 'Harga Sewa', 'Batas Pinjam','Lama Pinjam');
+	$this->table->set_heading('Nama Member' , 'Nama Buku', 'Tanggal Pinjam', 'Tanggal Kembali', 'Harga Sewa', 'Batas Pinjam','Lama Pinjam','No Hp');
 	foreach ($content as $pinjam):
-		$this->table->add_row($pinjam['namamember'],$pinjam['namabuku'],$pinjam['tglpinjam'],$pinjam['tglkembali'],$pinjam['hargasewa'],$pinjam['lama'],$pinjam['telat']);
+		$this->table->add_row($pinjam['namamember'],$pinjam['namabuku'],$pinjam['tglpinjam'],$pinjam['tglkembali'],$pinjam['hargasewa'],$pinjam['lama'],$pinjam['telat'],$pinjam['telepon']);
 	endforeach;
 	echo $this->table->generate();
 }

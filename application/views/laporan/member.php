@@ -51,7 +51,7 @@ if ($content!=""){
 	);
 	$this->table->set_template($tmpl);
 	
-	$this->table->set_heading('Jumlah Peminjaman', 'No Member','Nama Member','Jenis Kelamin','Telepon','Alamat', 'Tempat Lahir', 'Tanggal Lahir' );
+	$this->table->set_heading('Jumlah Peminjaman', 'Id Member','Nama Member','Jenis Kelamin','Telepon','Alamat', 'Tempat Lahir', 'Tanggal Lahir' );
 	foreach ($content as $member):
 		if ($member['jeniskelamin'] == 1){
 			$buku['jeniskelamin'] = "pria";
