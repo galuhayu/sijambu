@@ -29,7 +29,7 @@ class Password_controller extends Controller
 		$this->form_validation->set_rules('passconf','Passconf','required');
 		
 		if ($this->form_validation->run()==FALSE){
-			$m_data['notification_message']="Input Invalid";
+			$m_data['notification_message']="Masukan tidak valid";
 		}
 		else{
 			$passlama = $this->input->get_post('passlama');
