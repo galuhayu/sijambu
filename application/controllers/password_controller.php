@@ -36,10 +36,14 @@ class Password_controller extends Controller
 			$passbaru = $this->input->get_post('passbaru');
 			$passconf = $this->input->get_post('passconf');
 			$username = $this->session->userdata('username');
-			echo $username;
 			if ($passbaru == $passconf){
 				$temp = $this->user_model->changepassword($username, $passlama,$passbaru);
-				$m_data['notification_message']="Password telah berhasil diganti";
+				if ($temp ==1){
+					$m_data['notification_message']="Password telah berhasil diganti";
+				}
+				else{
+					$m_data['notification_message']="Password yang anda masukan salah, silahkan masukan password lama yang benar";
+				}
 
 			}else{
 				$m_data['notification_message']="Konfirmasi password tidak cocok";
