@@ -51,7 +51,7 @@ if ($content!=""){
 	);
 	$this->table->set_template($tmpl);
 	
-	$this->table->set_heading('Jumlah Peminjaman','No Buku','Judul Buku', 'Pengarang', 'Harga', 'Status', 'Tanggal Kembali', 'Lama sewa');
+	$this->table->set_heading('Jumlah Peminjaman','Id Buku','Judul Buku', 'Pengarang', 'Harga', 'Status', 'Tanggal Kembali', 'Lama sewa');
 	foreach ($content as $buku):
 		if ($buku['status'] == 0){
 			$buku['status'] = "dipinjam";
