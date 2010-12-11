@@ -5,15 +5,23 @@
 </head>
 
 <body>
+
+<img src="<?=base_url()?>/sijambu_style/sijambu.png" width="50" height="70"/>
+<div id = "judul">
+Sistem Informasi Peminjaman Buku
+</div>
 <div id="welcome">
+<div id="user">
 <?php 
 if( $this->session->userdata('logged_in') == TRUE ) {
 echo "Welcome, ".$this->session->userdata('username');
 ?>
+</div>
 <a href="<?=base_url()?>index.php/password_controller"> Ganti Password </a> 
 <a href="<?=base_url()?>index.php/logout_controller"> Logout </a> 
 <?php }?>
 </div>
+
 <!-- MENU -->
 <?php if( $this->session->userdata('logged_in') == TRUE ) { ?>
 
