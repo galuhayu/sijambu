@@ -42,7 +42,7 @@ echo form_open('buku/update_controller/searchBuku',$attributes);?>
 	<td>ID Book</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('find', 'Find');?></td>
+	<td><?php echo form_submit('cari', 'Cari');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>
@@ -107,7 +107,7 @@ echo form_open('buku/update_controller/updateBuku',$attributes);?>
 	<td>Lama Sewa</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('update', 'Update');?></td>
+	<td><?php echo form_submit('ubah', 'Ubah');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

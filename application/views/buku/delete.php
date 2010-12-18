@@ -34,13 +34,13 @@ HAPUS
 	'rules' => 'required',
 	);
 
-echo form_open('buku/delete_controller/deleteAccount',$attributes);?>
+echo form_open('buku/delete_controller/deleteBuku',$attributes);?>
 <table id="form">
 	<tr>
 	<td>Id Buku</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('delete', 'Delete');?></td>
+	<td><?php echo form_submit('hapus', 'Hapus');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

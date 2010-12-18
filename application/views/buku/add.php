@@ -64,7 +64,7 @@ echo form_open('buku/add_controller/addBuku',$attributes);?>
 	<td>Lama Sewa</td><td>: <?php echo form_input($field4); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('add', 'Add');?></td>
+	<td><?php echo form_submit('tambah', 'Tambah');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

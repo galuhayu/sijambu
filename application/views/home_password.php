@@ -82,7 +82,7 @@ echo form_open('password_controller/changepassword',$attributes);?>
 	<td>Confirm New Password</td><td>: <?php echo form_input($field3); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('register', 'Register');?></td>
+	<td><?php echo form_submit('ubah', 'Ubah');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

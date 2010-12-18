@@ -40,7 +40,7 @@ echo form_open('member/delete_controller/deleteMember',$attributes);?>
 	<td>Id Member</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('delete', 'Delete');?></td>
+	<td><?php echo form_submit('hapus', 'Hapus');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

@@ -8,8 +8,8 @@
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/add_controller"> TAMBAH</a></div> 
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/search_controller"> CARI</a></div>
-	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/update_controller"> UBAH</a></div>
+	<!--<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/update_controller"> UBAH</a></div>-->
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/delete_controller"> HAPUS</a></div>
 </div>

@@ -42,7 +42,7 @@ echo form_open('member/update_controller/searchMember',$attributes);?>
 	<td>ID Member</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('find', 'Find');?></td>
+	<td><?php echo form_submit('cari', 'Cari');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>
@@ -154,7 +154,7 @@ echo form_open('member/update_controller/updateMember',$attributes);?>
 	<td>Tanggal Lahir</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('update', 'Update');?></td>
+	<td><?php echo form_submit('ubah', 'Ubah');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>
