@@ -1270,9 +1270,17 @@ class CI_Form_validation {
 	{
 		return str_replace(array('<?php', '<?PHP', '<?', '?>'),  array('&lt;?php', '&lt;?PHP', '&lt;?', '?&gt;'), $str);
 	}
+	
+	function date($str)
+	{
+		return (bool)preg_match( '/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $str);
+
+	}
 
 }
 // END Form Validation Class
+
+
 
 /* End of file Form_validation.php */
 /* Location: ./system/libraries/Form_validation.php */
