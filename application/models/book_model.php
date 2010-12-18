@@ -20,7 +20,7 @@ class Book_model extends Model
 	}
 	
 	function search_buku_by_id ($field){
-		$query = $this->db->query("SELECT * FROM buku WHERE idbuku LIKE '%$field%'");
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku LIKE '%$field%' AND status=1 AND flag=0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -28,7 +28,7 @@ class Book_model extends Model
 	}
 	
 	function search_buku_by_judul ($field){
-		$query = $this->db->query("SELECT * FROM buku WHERE namabuku LIKE '%$field%'");
+		$query = $this->db->query("SELECT * FROM buku WHERE namabuku LIKE '%$field%' AND status=1 AND flag=0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -36,11 +36,11 @@ class Book_model extends Model
 	}
 	
 	function update_buku ($idbuku, $namabuku,$pengarang, $hargasewa,$lama){
-		$query=$this->db->query("UPDATE buku SET namabuku='$namabuku', pengarang='$pengarang', hargasewa=$hargasewa, lama=$lama WHERE idbuku=$idbuku");
+		$query=$this->db->query("UPDATE buku SET namabuku='$namabuku', pengarang='$pengarang', hargasewa=$hargasewa, lama=$lama WHERE idbuku=$idbuku AND status=1 AND flag=0");
 	}
 	
 	function search_buku_by_id_update ($field){
-		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= '$field'");
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= '$field' AND status='1' AND flag=0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -48,7 +48,7 @@ class Book_model extends Model
 	}
 
 	function delete_buku($idbuku){
-		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= $idbuku");
+		$query = $this->db->query("SELECT * FROM buku WHERE idbuku= $idbuku AND status=1 AND flag=0");
 		if ($query->num_rows()!=0)
 			$this->db->query("UPDATE buku SET flag = 1 WHERE idbuku = $idbuku");
 		else 

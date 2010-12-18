@@ -19,7 +19,7 @@ class Account_model extends Model
 	
 	function search_account ($username){
 		
-		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username LIKE '%$username%' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username LIKE '%$username%' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id AND isDelete=0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
@@ -29,14 +29,14 @@ class Account_model extends Model
 	function delete_account ($username){
 		$query = $this->db->query("SELECT * FROM user WHERE username = '$username'");
 		if ($query->num_rows()!=0)
-			$this->db->query("UPDATE user SET isDelete = 1 WHERE username = '$username'");
+			$this->db->query("UPDATE user SET isDelete = 1 WHERE username = '$username' AND isDelete=0");
 		else 
 			return 0;
 		return 1;
 	}
 	
 	function update_account ($username, $newrolename, $nama , $alamat, $telp){
-		$query = $this->db->query("SELECT user_id FROM user WHERE username = '$username'");
+		$query = $this->db->query("SELECT user_id FROM user WHERE username = '$username' AND isDelete=0");
 		if ($query->num_rows()!=0){
 			$row = $query->row();
 			$userid = $row->user_id;
@@ -58,7 +58,7 @@ class Account_model extends Model
 	
 	function search_account_update ($username){
 		
-		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username='$username' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id ");
+		$query = $this->db->query("SELECT * FROM role, user_role,user WHERE user.username='$username' AND user.user_id = user_role.user_id AND role.role_id = user_role.role_id AND isDelete=0");
 		if ($query->num_rows() !=0 ) {
 			return $query->result_array();
 		}
