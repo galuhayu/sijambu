@@ -1,5 +1,10 @@
 <?php
-
+/**
+*  class pinjam_controller
+*
+* class yang digunakan sebagai controller yang mengatur buku yang belum dikembalikan
+*
+*/
 class Pinjam_controller extends Controller {
 
 	function Pinjam_controller()
@@ -8,15 +13,23 @@ class Pinjam_controller extends Controller {
 		$this->load->library('input');
 		$this->load->model('laporan_model');
 	}
-	
+	/**
+	*
+	*	fungsi index 
+	*	adalah fungsi default yang dipanggil oleh pinjam_controller melakukan load header footer serta view laporan/pinjam.php
+	*	@param void
+	*	@return void
+	*/
 	function index()
 	{
+		//set session current menu to give mark in the active menu
 		$this->session->set_userdata('current_menu','LAPORAN');
 		$h_data['style']="simpel-herbal.css";
 		$m_data['notification_message']="";
 		$m_data['content']="";
 		$f_data['author']="fasilkom 07";
 		
+		//memanggil fungsi list_pinjam pada laporan_model untuk mendapatkan list pinjaman buku yang belum dikembalikan oleh pelanggan
 		$data = $this->laporan_model->list_pinjam();
 		$id=0;
 		date_default_timezone_set("UTC");
@@ -25,6 +38,7 @@ class Pinjam_controller extends Controller {
 		if ($data !=0 ){
 		
 			foreach ($data as $pinjamdata) :
+				//melakukan perhitungan lama telat untuk mengetahui lama pinjaman
 				$q = strtotime($pinjamdata['tglpinjam']);
 				$telat = floor (($now - $q) / (24 * 60 * 60));
 				$pinjamdata['telat'] = $telat;
