@@ -1,7 +1,18 @@
 <?php
-
+/**
+*  class kembali_controller
+*
+* class yang digunakan sebagai controller yang mengatur pengembalian buku
+*
+*/
 class Kembali_controller extends Controller {
-
+	/**
+	*
+	*	Constructor
+	*	
+	*	mendefinisikan konstruktor kembali controller
+	*	sekaligus meload library input dan model pengembalian model
+	*/
 	function Kembali_controller()
 	{
 		parent::Controller();	
@@ -9,6 +20,13 @@ class Kembali_controller extends Controller {
 		$this->load->model('pengembalian_model');
 	}
 	
+	/**
+	*
+	*	fungsi index 
+	*	adalah fungsi default yang dipanggil oleh add_controller melakukan load header footer serta view account/add.php
+	*	@param void
+	*	@return void
+	*/
 	function index()
 	{
 		$this->session->set_userdata('current_menu','PENGEMBALIAN');
@@ -22,13 +40,21 @@ class Kembali_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
+	/**
+	*
+	*	fungsi transaksi
+	*	adalah fungsi yang digunakan untuk mendapatkan id member inging melakukan pengembalian
+	*	@param void
+	*	@return void
+	*/
 	function transaksi(){
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="fasilkom 07";
 		$m_data['content'] = "";
 		$this->load->view('admin/header.php',$h_data);
 		
-		$this->form_validation->set_rules('idmember','Id Member','required');
+		//melakukan validation
+		$this->form_validation->set_rules('idmember','Id Member','required|numeric');
 		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Masukan tidak valid";
@@ -36,6 +62,7 @@ class Kembali_controller extends Controller {
 			$this->load->view('pengembalian/home.php',$m_data);
 		}
 		else{
+			//get variable post
 			$idmember = $this->input->get_post('idmember');
 			$temp = $this->pengembalian_model->validate_id($idmember);
 			if ($temp == 0){
@@ -43,12 +70,14 @@ class Kembali_controller extends Controller {
 				$this->load->view('pengembalian/home.php',$m_data);
 			}
 			else{
+				//mengambil list berdasarkan idmember yang memiliki pinjaman buku dan ingin melakukan pengembalian
 				$data = $this->pengembalian_model->get_list($idmember);
 				$temp = "";
 				if ($data !=0){
 					$id = 0;
 					foreach ($data as $buku):
 						$temp[$id] = $buku;
+						//hitung denda
 						$temp[$id]['denda'] = 0;
 						$id++;
 					endforeach;
@@ -69,6 +98,13 @@ class Kembali_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
+	/**
+	*
+	*	fungsi transaksi hitung
+	*	adalah fungsi yang digunakan untuk menghitung denda untuk buku yang akan dikembalikan
+	*	@param void
+	*	@return void
+	*/
 	function transaksiHitung(){
 		$idmember = $this->input->get_post('idmember');
 		$num = $this->input->get_post('num');
@@ -78,6 +114,7 @@ class Kembali_controller extends Controller {
 		$totaldenda = 0;
 		$temp = "";
 		$select = "";
+		//untuk setiap entry yang telah dicek untuk pengembalian akan dihitung denda, sedangkan buku yang masih belum dikembalikan akan ditampilkan saja
 		if ($content >0){
 			for ($c = 0 ; $c < $num * 8 ; ){
 				$idbuku = $content[$c]['idbuku'];
@@ -102,8 +139,10 @@ class Kembali_controller extends Controller {
 					date_default_timezone_set("UTC");
 					$now = time();
 					$q = strtotime($tglpinjam);
-					
+					//menghitung lama waktu telat
 					$telat = floor (($now - $q) / (24 * 60 * 60)) - $lama;
+					
+					//menghitung denda
 					if ($telat > 0 ){
 						$denda = (0.1 * $hargasewa) * $telat;
 					}
@@ -126,7 +165,13 @@ class Kembali_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 		
-	
+	/**
+	*
+	*	fungsi transaksi simpan
+	*	adalah fungsi yang digunakan menyimpan transaksi pengembalian ke dalam database
+	*	@param void
+	*	@return void
+	*/
 	function transaksiSimpan(){
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="fasilkom 07";
@@ -139,6 +184,8 @@ class Kembali_controller extends Controller {
 			$num = $this->input->get_post('num');
 			$content = $this->input->get_post('data');
 			$select = $this->input->get_post('select');
+			
+			//memproses semua line item untuk buku yang akan dikembalikan
 		if ($select != "") {
 			for ($c = 0 ; $c < $num * 8 ; ){
 				$idbuku = $content[$c]['idbuku'];
@@ -157,6 +204,7 @@ class Kembali_controller extends Controller {
 				$denda = $content[$c]['denda'];
 				$c++; // this add for denda
 				
+				//menghitung denda dan mengubah status transaksi menjadi lunas
 				$check = $select[$id];
 				if ($check == TRUE){
 					$denda = $denda;

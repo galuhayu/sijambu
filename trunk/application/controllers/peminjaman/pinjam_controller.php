@@ -1,7 +1,18 @@
 <?php
-
+/**
+*  class pinjam_controller
+*
+* class yang digunakan sebagai controller yang mengatur peminjaman buku
+*
+*/
 class Pinjam_controller extends Controller {
-
+	/**
+	*
+	*	Constructor
+	*	
+	*	mendefinisikan konstruktor pinjam controller
+	*	sekaligus meload library input dan model peminjaman model
+	*/
 	function Pinjam_controller()
 	{
 		parent::Controller();	
@@ -9,6 +20,13 @@ class Pinjam_controller extends Controller {
 		$this->load->model('peminjaman_model');
 	}
 	
+	/**
+	*
+	*	fungsi index 
+	*	adalah fungsi default yang dipanggil oleh add_controller melakukan load header footer serta view account/add.php
+	*	@param void
+	*	@return void
+	*/
 	function index()
 	{
 		$this->session->set_userdata('current_menu','PEMINJAMAN');
@@ -22,13 +40,21 @@ class Pinjam_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
+	/**
+	*
+	*	fungsi transaksi
+	*	adalah fungsi yang digunakan untuk mendapatkan id member inging melakukan peminjaman
+	*	@param void
+	*	@return void
+	*/
 	function transaksi(){
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="fasilkom 07";
 		$m_data['content'] = "";
 		$this->load->view('admin/header.php',$h_data);
 		
-		$this->form_validation->set_rules('idmember','Id Member','required');
+		//melakukan validation
+		$this->form_validation->set_rules('idmember','Id Member','required|numeric');
 		
 		if ($this->form_validation->run()==FALSE){
 			$m_data['notification_message']="Masukan tidak valid";
@@ -36,6 +62,7 @@ class Pinjam_controller extends Controller {
 			$this->load->view('peminjaman/home.php',$m_data);
 		}
 		else{
+			//get variable post
 			$idmember = $this->input->get_post('idmember');
 			$tipe = $this->input->get_post('tipe');
 			if ($tipe == 'bacatempat'){
@@ -44,6 +71,8 @@ class Pinjam_controller extends Controller {
 			else {
 				$tipe = 2;
 			}
+			
+			//melakukan validasi id member yang didapat dari form bila sesuai lanjut ke halaman transaksi , jika tidak kembali ke halaman home
 			$temp = $this->peminjaman_model->validate_id($idmember);
 			if ($temp == 0){
 				$m_data['notification_message']="Member tidak ditemukan";
@@ -62,13 +91,23 @@ class Pinjam_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
+	/**
+	*
+	*	fungsi transaksi tambah
+	*	adalah fungsi yang digunakan untuk menambah buku yang akan dipinjam 
+	*	@param void
+	*	@return void
+	*/
 	function transaksiTambah(){
-		$this->form_validation->set_rules('idbuku','Id Buku','required');
+		//validasi idbuku yang akan dipinjam
+		$this->form_validation->set_rules('idbuku','Id Buku','required|numeric');
+		
 		$idmember = $this->input->get_post('idmember');
 		$tipe = $this->input->get_post('tipe');
 		
 		$num = $this->input->get_post('num');
 		
+		//untuk setiap buku yang telah ditambahkan tapi belum disimpan diproses ulang dalam bentuk array supaya dapat muncul secara bersama - sama
 		$prevcontent = $this->input->get_post('data');
 		$id = 0;
 		$totalsewa = 0;
@@ -100,6 +139,7 @@ class Pinjam_controller extends Controller {
 		else{
 			$idbuku = $this->input->get_post('idbuku');
 			
+			//untuk id buku yang akan dipinjam akan dicari di database kemudian dilakukan perhitungan biaya yang dikenakan
 			$data = $this->peminjaman_model->add_line($idbuku);
 			if ($data != 0){
 				foreach ($data as $buku) :
@@ -127,6 +167,14 @@ class Pinjam_controller extends Controller {
 		$this->load->view('admin/footer.php',$f_data);
 	}
 	
+	
+	/**
+	*
+	*	fungsi transaksi simpan
+	*	adalah fungsi yang digunakan menyimpan transaksi peminjaman ke dalam database
+	*	@param void
+	*	@return void
+	*/
 	function transaksiSimpan(){
 		$h_data['style']="simpel-herbal.css";
 		$f_data['author']="fasilkom 07";
@@ -136,6 +184,8 @@ class Pinjam_controller extends Controller {
 		$num = $this->input->get_post('num');
 		$content = $this->input->get_post('data');
 		$temp = "";
+		
+		//untuk setiap row di table akan dimasukkan ke dalam table transaksi di database
 		if ($content >0){
 			for ($c = 0 ; $c < $num * 5 ; ){
 				$idbuku = $content[$c]['idbuku'];
@@ -154,6 +204,8 @@ class Pinjam_controller extends Controller {
 				$datestring = "%Y-%m-%d";
 				$now = time();
 				$ret=$now+(24*60*60*$lama);
+				
+				//memanggil fungsi save_line_transaction untuk menyimpan transaksi 1 buku yang ada di tabel peminjaman
 				$temp = $this->peminjaman_model->save_line_transaction($idmember,$idbuku,$tipe,mdate($datestring,$now),mdate($datestring,$ret),$hargasewa);
 		
 			}

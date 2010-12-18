@@ -1,12 +1,29 @@
 <?php
-
+/**
+*  class home_controller
+*
+* class yang digunakan sebagai controller untuk mengatur navigasi halaman utama
+*
+*/
 class Home_controller extends Controller {
-
+	/**
+	*
+	*	Constructor
+	*	
+	*	mendefinisikan konstruktor home controller
+	*	
+	*/
 	function Home_controller()
 	{
 		parent::Controller();	
 	}
-	
+	/**
+	*
+	*	fungsi index 
+	*	adalah fungsi default yang dipanggil oleh home_controller melakukan load header footer serta view home_view.php
+	*	@param void
+	*	@return void
+	*/
 	function index()
 	{
 		$this->session->set_userdata('current_menu','HOME');
