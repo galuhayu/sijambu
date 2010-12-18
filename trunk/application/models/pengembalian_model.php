@@ -6,7 +6,7 @@ class Pengembalian_model extends Model
 	}
 	
 	function validate_id($idmember){
-		$data = $this->db->query(" SELECT * FROM member WHERE idmember=$idmember ");
+		$data = $this->db->query(" SELECT * FROM member WHERE idmember=$idmember AND statusmember=0");
 		return $data->num_rows();
 	}
 	
