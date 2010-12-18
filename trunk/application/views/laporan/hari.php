@@ -50,7 +50,7 @@ echo form_open('laporan/hari_controller/search',$attributes);?>
 	<td>End Date </td><td>: <?php echo form_input($field2); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('search', 'Search');?></td>
+	<td><?php echo form_submit('cari', 'Cari');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

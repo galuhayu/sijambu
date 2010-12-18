@@ -89,7 +89,7 @@ echo form_open('member/add_controller/addMember',$attributes);?>
 	<td>Tanggal Lahir</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('add', 'Add');?></td>
+	<td><?php echo form_submit('tambah', 'Tambah');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

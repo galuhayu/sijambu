@@ -8,8 +8,8 @@
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/add_controller"> TAMBAH</a></div> 
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/search_controller"> CARI</a></div>
-	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
-	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/update_controller"> UBAH</a></div>
+	<!--<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
+	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/update_controller"> UBAH</a></div>-->
 	<?php if( $this->session->userdata('current_modulmenu') == 'PROFILE' ) $type = 'current_modulmenu'; else $type = 'modulmenu';?>
 	<div class="<?php echo $type?>"><a href="<?=base_url()?>index.php/account/delete_controller"> HAPUS</a></div>
 </div>
@@ -42,7 +42,7 @@ echo form_open('account/update_controller/searchAccount',$attributes);?>
 	<td>Username</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('find', 'Find');?></td>
+	<td><?php echo form_submit('cari', 'Cari');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>
@@ -106,7 +106,7 @@ echo form_open('account/update_controller/updateAccount',$attributes);?>
 	<td>No telp</td><td>: <?php echo form_input($field6); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('update', 'Update');?></td>
+	<td><?php echo form_submit('ubah', 'Ubah');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

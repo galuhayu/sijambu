@@ -55,7 +55,7 @@ echo form_open('member/search_controller/searchMember',$attributes);?>
 	<td>Field</td><td>: <?php echo form_input($field1); ?></td>
 	</tr>
 	<tr>
-	<td><?php echo form_submit('search', 'Search');?></td>
+	<td><?php echo form_submit('cari', 'Cari');?></td>
 	</tr>
 </table>
 <?php echo form_close();?>

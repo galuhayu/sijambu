@@ -40,7 +40,7 @@ Tipe Peminjaman :
 	<table id="form1">
 	<tr>
 	<td>Id Buku</td><td>: <?php echo form_input($field1); ?></td>
-	<td><?php echo form_submit('add', 'Add');?></td>
+	<td><?php echo form_submit('tambah', 'Tambah');?></td>
 	</tr>
 	</table>
 	<?php echo form_close();?>
