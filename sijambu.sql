@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `member` (
 
 INSERT INTO `member` (`idmember`, `namamember`, `jeniskelamin`, `telepon`, `alamat`, `tempatlahir`, `tgllahir`, `statusmember`, `jumpinjam`) VALUES
 (1, 'yulianti', 2, '08192777777', 'Depok', 'Palembang', '0000-00-00', 0, 0),
-(2, 'Ade Saputra', 1, '0819747437327', 'Depok', 'Jambi', '1989-04-01', 0, 0),
+(2, 'Ade Saputra', 1, '0819747437327', 'Depok', 'Jambi', '1989-01-01', 0, 0),
 (3, 'Luki', 1, '090909090909', 'Jakarta', 'Jakarta', '1989-01-13', 0, 0),
 (4, 'alfian', 1, '0891234566', 'Depok', 'Bandung', '1989-06-02', 0, 0),
 (5, 'Rinaldi', 1, '0718274656', 'Jakarta', 'Jakarta', '1989-07-14', 0, 0),
@@ -160,8 +160,8 @@ INSERT INTO `user` (`user_id`, `nama`, `username`, `password`, `nohp`, `alamat`,
 (2, 'Pegawai', 'pegawai', 'a431ba54c55ae2cb91be1785398ecd595ca96b7a', '08190000001', 'Jln. Perumahan Pegawai', 'herbal', 0),
 (3, 'Pemilik', 'pemilik', '1f86485ac9c8b00fb355bd1eb1c86d937f6d457c', '08190000002', 'Jln. Perumahan Pemilik', 'herbal', 0),
 (4, 'Pengelola', 'pengelola', 'c04b214bd23a91c98288045a99f753e25b70d691', '08190000003', 'Jln. Perumahan Pengelola', 'herbal', 0),
-(28, 'Ade Saputra', 'ade', '6fb0394b969258c4f33b92bbe8c601462bb5455b', '081807418051', 'Griya Indah', 'herbal', 0),
-(29, 'Yulianti', 'yuli', 'fc3042dcd8e80ae51d901051cbfd784883eeb013', '081927651112', 'Enelis', 'herbal', 0),
+(28, 'Ade Saputra', 'ade', '6fb0394b969258c4f33b92bbe8c601462bb5455b', '08181621821', 'Griya Indah', 'herbal', 0),
+(29, 'Yulianti', 'yuli', 'fc3042dcd8e80ae51d901051cbfd784883eeb013', '081938181734', 'Enelis', 'herbal', 0),
 (30, 'Percobaan saja', 'coba', '6228fcd5b58de800fd5798dd4cc5b6ccb233220b', '08190000004', 'Jln Coba Coba', 'herbal', 0),
 (31, '', 'new', 'c2a6b03f190dfb2b4aa91f8af8d477a9bc3401dc', NULL, NULL, 'herbal', 0);
 
